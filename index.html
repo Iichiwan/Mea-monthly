@@ -11,9 +11,31 @@
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
 
-        var text = ['杂谈', '棒球', 'MHW', 'TC', 'B限', '歌回', 'PUBG等', '只狼', 'LOL', '雪山狼人', '保健室', '深夜TC', '马造2', '杂谈麻将', '会员限定', '死喷2', '睡眠导入', '保健拍照'];
-
-        var Data = [
+        //text19? 直播名称;Data19? 直播时长矩阵
+        var text196 = ['杂转撸块', '憋尿方块', '黑白棋', '杂转雀壶', '杂谈转壶', '杂谈转歌', '杂谈', '周年', 'MC', '模拟手术', '歌回', 'TC', 'B限', '占位', '占位', '占位', '占位', '占位', '占位'];
+        var Data196 = [
+    [153, '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', 63, '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', '-', 119, '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', '-', '-', 138, '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', '-', '-', '-', 71, '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', '-', '-', '-', '-', 145, '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', '-', '-', '-', '-', '-', 132, '-', 96, '-', '-', '-', '-', '-'],
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', 56, '-', '-', '-', '-'],
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', 270, '-', '-', '-'],
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', 57, '-', '-'],
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', 69, '-', '-', '-', '-'],
+    ['-', '-', '-', '-', '-', '-', '-', '-', 98, 60, 143, 47, '-', '-'],
+    ['-', '-', '-', '-', '-', '-', '-', 76, '-', '-', '-', 121, '-', '-'],
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-']
+        ];
+        var text197 = ['杂谈', '棒球', 'MHW', 'TC', 'B限', '歌回', 'PUBG等', '只狼', 'LOL', '雪山狼人', '保健室', '深夜TC', '马造2', '杂谈麻将', '会员限定', '死喷2', '睡眠导入', '保健拍照'];
+        var Data197 = [
     [81, '-', 96, '-', '-', '-', '-', 111, '-', '-', '-', '-', 94],
     [300, '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
     ['-', '-', '-', 141, '-', '-', '-', '-', '-', '-', '-', '-', '-'],
@@ -35,27 +57,306 @@
         ]
 
         var option = {
+            baseOption: {
+                timeline: {
+                    // y: 0,
+                    axisType: 'category',
+                    // realtime: false,
+                    // loop: false,
+                    autoPlay: false,
+                    // currentIndex: 2,
+                    playInterval: 1000,
+                    // controlStyle: {
+                    //     position: 'left'
+                    // },
+                    data: ['2019-06-01', '2019-07-01'],
+                    label: {
+                        formatter: function (s) {
+                            return (new Date(s)).getMonth()+1+'月';
+                        }
+                    }
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    showContent: false,
+                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '10%',
+                    containLabel: true
+                },
+            },
+            options: [
+            //6月
+            {
+                title: {
+                    top: 10,
+                    left: 'center',
+                    text: '2019.6神乐mea每日直播时长',
+                    subtext: '单位：分'
+                },
+                color: ['#FF3030', '#8dcfdd', '#8dcfdd', '#FF3030', '#FF3030', '#ffe9aa', '#FF3030', '#FF3030', '#8dcfdd', '#8dcfdd', '#ffe9aa', '#0059c5', '#f45a8d', '#FF3030', '#FF3030', '#FF3030', '#FF3030', '#FF3030', '#FF3030'],
+                //'#FF3030'油管红, '#f45a8d'B站粉, '#0059c5'TC蓝, '#ffe9aa'MEA黄(歌回), '#8dcfdd'Mea蓝(游戏), '#e897db'Aqua紫, '#565461'Mea黑(填补)
+                xAxis: {
+                    type: 'category',
+                    data: ['6.1', '6.12', '6.13', '6.16', '6.17', '6.19', '6.24', '6.25', '6.26', '6.28', '6.29', '6.30', '共13天', '共18次']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[0],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[0]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[1],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[1]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[2],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[2]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[3],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[3]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[4],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[4]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[5],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[5]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[6],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[6]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[7],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[7]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[8],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[8]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[9],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[9]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[10],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[10]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[11],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[11]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[12],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[12]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[13],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[13]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[14],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[14]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[15],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[15]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[16],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[16]
+                },
+                {
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        formatter: "{c}" + "\n" + text196[17],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000"
+                        }
+                    },
+                    data: Data196[17]
+                },
+
+
+                ]
+            },
+            //7月
+            {
             title: {
                 top: 10,
                 left: 'center',
                 text: '2019.7神乐mea每日直播时长',
                 subtext: '单位：分'
             },
-            tooltip: {
-                trigger: 'axis',
-                showContent: false,
-                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-                }
-            },
-            color: ['#FF3030', '#8dcfdd', '#8dcfdd', '#0059c5', '#f45a8d', '#ffe9aa', '#8dcfdd', '#565461', '#8dcfdd', '#565461', '#FF3030', '#0059c5', '#8dcfdd', '#FF3030', '#565461', '#8dcfdd', '#ffe9aa','#FF3030'],
+            color: ['#FF3030', '#8dcfdd', '#8dcfdd', '#0059c5', '#f45a8d', '#ffe9aa', '#8dcfdd', '#565461', '#8dcfdd','#8dcfdd', '#FF3030', '#0059c5', '#8dcfdd', '#FF3030', '#565461', '#8dcfdd', '#ffe9aa','#FF3030'],
             //'#FF3030'油管红, '#f45a8d'B站粉, '#0059c5'TC蓝, '#ffe9aa'MEA黄(歌回), '#8dcfdd'Mea蓝(游戏), '#e897db'Aqua紫, '#565461'Mea黑(填补)
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
             xAxis: {
                 type: 'category',
                 data: ['7.5 ', '7.13 ', '7.15 ', '7.17 ', '7.18 ', '7.19 ', '7.24 ', '7.25 ', '7.26 ', '7.27 ', '7.28 ', '7.29 ', '7.30 ', '7.31 ', ]
@@ -68,281 +369,306 @@
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[0],
+                    formatter: "{c}" + "\n" + text197[0],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[0]
+                data: Data197[0]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[1],
+                    formatter: "{c}" + "\n" + text197[1],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[1]
+                data: Data197[1]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[2],
+                    formatter: "{c}" + "\n" + text197[2],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[2]
+                data: Data197[2]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[3],
+                    formatter: "{c}" + "\n" + text197[3],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[3]
+                data: Data197[3]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[4],
+                    formatter: "{c}" + "\n" + text197[4],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[4]
+                data: Data197[4]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[5],
+                    formatter: "{c}" + "\n" + text197[5],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[5]
+                data: Data197[5]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[6],
+                    formatter: "{c}" + "\n" + text197[6],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[6]
+                data: Data197[6]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[7],
+                    formatter: "{c}" + "\n" + text197[7],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[7]
+                data: Data197[7]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[8],
+                    formatter: "{c}" + "\n" + text197[8],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[8]
+                data: Data197[8]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[9],
+                    formatter: "{c}" + "\n" + text197[9],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[9]
+                data: Data197[9]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[10],
+                    formatter: "{c}" + "\n" + text197[10],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[10]
+                data: Data197[10]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[11],
+                    formatter: "{c}" + "\n" + text197[11],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[11]
+                data: Data197[11]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[12],
+                    formatter: "{c}" + "\n" + text197[12],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[12]
+                data: Data197[12]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[13],
+                    formatter: "{c}" + "\n" + text197[13],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[13]
+                data: Data197[13]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[14],
+                    formatter: "{c}" + "\n" + text197[14],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[14]
+                data: Data197[14]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[15],
+                    formatter: "{c}" + "\n" + text197[15],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[15]
+                data: Data197[15]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[16],
+                    formatter: "{c}" + "\n" + text197[16],
                     show: true,
                     position: 'insideTop',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[16]
+                data: Data197[16]
             },
             {
                 type: 'bar',
                 stack: '总量',
                 label: {
-                    formatter: "{c}" + "\n" + text[17],
+                    formatter: "{c}" + "\n" + text197[17],
                     show: true,
                     position: 'top',
                     textStyle: {
                         color: "#000"
                     }
                 },
-                data: Data[17]
+                data: Data197[17]
             },
+            ]
+            }
             ]
         };
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
     </script>
-    <div id="main2" style="width:1000px;height:750px;"></div>
+    <div id="main2" style="width: 1000px;height:750px;"></div>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main2'));
 
-        var graphData = [
-[1561910400000, 0],
-[1561996800000, 0],
-[1562083200000, 0],
-[1562169600000, 0],
-[1562256000000, 381],
-[1562342400000, 0],
-[1562428800000, 0],
-[1562515200000, 0],
-[1562601600000, 0],
-[1562688000000, 0],
-[1562774400000, 0],
-[1562860800000, 0],
-[1562947200000, 162],
-[1563033600000, 0],
-[1563120000000, 96],
-[1563206400000, 0],
-[1563292800000, 521],
-[1563379200000, 365],
-[1563465600000, 92],
-[1563552000000, 0],
-[1563638400000, 0],
-[1563724800000, 0],
-[1563811200000, 0],
-[1563897600000, 304],
-[1563984000000, 201],
-[1564070400000, 74],
-[1564156800000, 123],
-[1564243200000, 194],
-[1564329600000, 619],
-[1564416000000, 0],
-[1564502400000, 0],
+        //graphData19? 热力图; dateList19? 全月+单日时长+内容;DateData19? 待填充
+        var graphData196 = [
+[1559318400000,153],
+[1560268800000,63],
+[1560355200000,119],
+[1560614400000,138],
+[1560700800000,71],
+[1560873600000,145],
+[1561305600000,132],
+[1561392000000,76],
+[1561478400000,194],
+[1561651200000,185],
+[1561737600000,413],
+[1561824000000,225]
         ];
+        var dateList196 = [
+    ['2019-6-1', 153, '杂转撸块'],
+    ['2019-6-2', '-', '-'],
+    ['2019-6-3', '-', '-'],
+    ['2019-6-4', '-', '-'],
+    ['2019-6-5', '-', '-'],
+    ['2019-6-6', '-', '-'],
+    ['2019-6-7', '-', '-'],
+    ['2019-6-8', '-', '-'],
+    ['2019-6-9', '-', '-'],
+    ['2019-6-10', '-', '-'],
+    ['2019-6-11', '-', '-'],
+    ['2019-6-12', 63, '憋尿方块'],
+    ['2019-6-13', 119, '黑白棋'],
+    ['2019-6-14', '-', '-'],
+    ['2019-6-15', '-', '-'],
+    ['2019-6-16', 138, '杂转雀壶'],
+    ['2019-6-17', 71, '杂谈转壶'],
+    ['2019-6-18', '-', '-'],
+    ['2019-6-19', 145, '杂谈转歌'],
+    ['2019-6-20', '-', '-'],
+    ['2019-6-21', '-', '-'],
+    ['2019-6-22', '-', '-'],
+    ['2019-6-23', '-', '-'],
+    ['2019-6-24', 132, '杂谈'],
+    ['2019-6-25', 76, 'B限'],
+    ['2019-6-26', 194, '杂谈\nTC'],
+    ['2019-6-27', '-', '-'],
+    ['2019-6-28', 185, '周年\n歌回\nTC'],
+    ['2019-6-29', 413, 'MC\nTC'],
+    ['2019-6-30', 225, '模拟手术\nTC\nB限']
+        ]
+        var DateData196 = [];
+        for (var i = 0; i < dateList196.length; i++) {
+            DateData196.push([
+                dateList196[i][0],
+                1,
+            ]);
+        }
 
-        var graphDatano = [
+
+
+        var graphData197 = [
 [1562256000000, 381],
 [1562947200000, 162],
 [1563120000000, 96],
@@ -357,8 +683,7 @@
 [1564329600000, 619],
 [1564416000000, 183],
         ];
-
-        var dateList = [
+        var dateList197 = [
     ['2019-7-1', '-', '-'],
     ['2019-7-2', '-', '-'],
     ['2019-7-3', '-', '-'],
@@ -391,108 +716,222 @@
     ['2019-7-30', 183, '杂谈\nTC\n保健拍照'],
     ['2019-7-31', '-', '-']
         ]
-        var DateData = [];
-        for (var i = 0; i < dateList.length; i++) {
-            DateData.push([
-                dateList[i][0],
+        var DateData197 = [];
+        for (var i = 0; i < dateList197.length; i++) {
+            DateData197.push([
+                dateList197[i][0],
                 1,
             ]);
         }
-        var option = {
-            tooltip: {},
-            visualMap: {
-                min: 0,
-                max: 720,
-                splitNumber: 6,
-                inRange: {
-                    color: ['#d94e5d', '#eac736', '#50a3ba'].reverse()
-                },
-                orient: 'horizontal',
-                left: 'center',
-                top: 'top',
-                textStyle: {
-                    color: '#000'
-                }
-            },
-            calendar: [{
-                left: 'center',
-                top: 'center',
-                cellSize: [100, 100],
-                yearLabel: { show: false },
-                orient: 'vertical',
-                dayLabel: {
-                    firstDay: 1,
-                    nameMap: 'cn'
-                },
-                monthLabel: {
-                    show: true
-                },
-                range: '2019-07'
-            }],
 
-            series: [{
-                type: 'scatter',
-                coordinateSystem: 'calendar',
-                symbolSize: 1,
-                label: {
-                    normal: {
-                        show: true,
-                        formatter: function (params) {
-                            var d = echarts.number.parseDate(params.value[0]);
-                            return d.getDate() + '\n\n\n\n\n';
-                        },
-                        textStyle: {
-                            fontSize: 14,
-                            fontWeight: 700,
-                            color: '#a00'
+        var option = {
+            baseOption: {
+                timeline: {
+                    // y: 0,
+                    axisType: 'category',
+                    // realtime: false,
+                    // loop: false,
+                    autoPlay: false,
+                    // currentIndex: 2,
+                    playInterval: 1000,
+                    // controlStyle: {
+                    //     position: 'left'
+                    // },
+                    data: ['2019-06-01', '2019-07-01'],
+                    label: {
+                        formatter: function (s) {
+                            return (new Date(s)).getMonth()+1+'月';
                         }
                     }
                 },
-                data: DateData
-            },
-        {
-            type: 'scatter',
-            coordinateSystem: 'calendar',
-            symbolSize: 1,
-            label: {
-                normal: {
-                    show: true,
-                    formatter: function (params) {
-                        return '' + (params.value[2] || '');
+                tooltip: {showContent: false},
+                calculable: true,
+                grid: {
+                    top: 80,
+                    bottom: 100
+                },
+                visualMap: {
+                    min: 0,
+                    max: 720,
+                    splitNumber: 6,
+                    inRange: {
+                        color: ['#d94e5d', '#eac736', '#50a3ba'].reverse()
                     },
+                    orient: 'horizontal',
+                    left: 'center',
+                    bottom: 80,
                     textStyle: {
                         color: '#000'
                     }
                 }
             },
-            data: dateList
-        },
-       {
-           type: 'scatter',
-           coordinateSystem: 'calendar',
-           symbolSize: 1,
-           label: {
-               normal: {
-                   show: true,
-                   formatter: function (params) {
-                       return '\n\n\n\n\n' + params.value[1] + 'min';
+            options: [
+             //6月
+                {
+                    title: {
+                        subtext: '6月直播13天、18次、共1914min'
+                    },
+                    calendar: [{
+                        left: 'center',
+                        top: 'center',
+                        cellSize: [100, 100],
+                        yearLabel: { show: false },
+                        orient: 'vertical',
+                        dayLabel: {
+                            firstDay: 1,
+                            nameMap: 'cn'
+                        },
+                        monthLabel: {
+                            show: true
+                        },
+                        range: '2019-06'
+                    }],
+                    series: [{
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    var d = echarts.number.parseDate(params.value[0]);
+                                    return d.getDate() + '\n\n\n\n\n';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#a00'
+                                }
+                            }
+                        },
+                        data: DateData196
+                    },
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '' + (params.value[2] || '');
+                            },
+                            textStyle: {
+                                color: '#000'
+                            }
+                        }
+                    },
+                    data: dateList196
+                },
+               {
+                   type: 'scatter',
+                   coordinateSystem: 'calendar',
+                   symbolSize: 1,
+                   label: {
+                       normal: {
+                           show: true,
+                           formatter: function (params) {
+                               return '\n\n\n\n\n' + params.value[1] + 'min';
+                           },
+                           textStyle: {
+                               fontSize: 14,
+                               fontWeight: 700,
+                               color: '#000'
+                           }
+                       }
                    },
-                   textStyle: {
-                       fontSize: 14,
-                       fontWeight: 700,
-                       color: '#000'
-                   }
-               }
-           },
-           data: dateList
-       },
-        {
-            type: 'heatmap',
-            coordinateSystem: 'calendar',
-            data: graphDatano
-        }]
+                   data: dateList196
+               },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: graphData196
+                }]
+                },
 
-
+                //7月
+                {
+                    title: {
+                        subtext: '7月总计min'
+                    },
+                    calendar: [{
+                        left: 'center',
+                        top: 'center',
+                        cellSize: [100, 100],
+                        yearLabel: { show: false },
+                        orient: 'vertical',
+                        dayLabel: {
+                            firstDay: 1,
+                            nameMap: 'cn'
+                        },
+                        monthLabel: {
+                            show: true
+                        },
+                        range: '2019-07'
+                    }],
+                    series: [{
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    var d = echarts.number.parseDate(params.value[0]);
+                                    return d.getDate() + '\n\n\n\n\n';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#a00'
+                                }
+                            }
+                        },
+                        data: DateData197
+                    },
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '' + (params.value[2] || '');
+                            },
+                            textStyle: {
+                                color: '#000'
+                            }
+                        }
+                    },
+                    data: dateList197
+                },
+               {
+                   type: 'scatter',
+                   coordinateSystem: 'calendar',
+                   symbolSize: 1,
+                   label: {
+                       normal: {
+                           show: true,
+                           formatter: function (params) {
+                               return '\n\n\n\n\n' + params.value[1] + 'min';
+                           },
+                           textStyle: {
+                               fontSize: 14,
+                               fontWeight: 700,
+                               color: '#000'
+                           }
+                       }
+                   },
+                   data: dateList197
+               },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: graphData197
+                }]
+                },
+            ]
         };
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
