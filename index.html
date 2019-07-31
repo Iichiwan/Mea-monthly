@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="echarts.min.js"></script>
+    <script src="vintage.js"></script>
     <title>echarts</title>
 </head>
 <body>
@@ -9,7 +10,7 @@
     <div id="main" style="width: 1000px;height:750px;"></div>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
+        var myChart = echarts.init(document.getElementById('main'), 'vintage');
 
         //text19? 直播名称;Data19? 直播时长矩阵
         //2019.6
@@ -631,7 +632,7 @@
     <div id="main2" style="width: 1000px;height:750px;"></div>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main2'));
+        var myChart = echarts.init(document.getElementById('main2'), 'vintage');
 
         //graphData19? 热力图+内容全文; dateList19? 全月+单日时长+内容;DateData19? 待填充
         //2019.6
