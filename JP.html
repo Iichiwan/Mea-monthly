@@ -13,6 +13,11 @@
         var myChart = echarts.init(document.getElementById('main'), 'vintage');
 
         //text19? 直播名称;Data19? 直播时长矩阵
+        //2019.x
+        var text19x = ['杂谈'];
+        var Data19x = [
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+        ];
         //2019.6
         var text196 = ['雑談+α', 'テトリス', '逆転オセ', '雑談+α', '雑談+α', '雑談+歌', '雑談', '1周年', 'MC', 'ゲーム', '歌枠', 'TC', 'Bilibili'];
         var Data196 = [
@@ -53,27 +58,39 @@
     ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', 5, '-'],
     ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', 249]
         ];
+        //2019.8
+        var text198 = ['Meu','MeAlice','歌枠','誕生日','人狼','開封枠','Bilibili','マイクラ'];
+        var Data198 = [
+    [34, '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    [110, '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    [72, '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', 79, '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', 120, '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', '-', 85, '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', '-', 100, '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', '-', '-', 122, '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+        ];
 
         var option = {
             baseOption: {
                 timeline: {
                     // y: 0,
                     axisType: 'category',
-                    currentIndex:1,
+                    currentIndex: 2,
                     // realtime: false,
                     // loop: false,
                     autoPlay: false,
                     // currentIndex: 2,
-                    playInterval: 100,
+                    playInterval: 1000,
                     // controlStyle: {
                     //     position: 'left'
                     // },
-                    data: ['2019-06-01', '2019-07-01'],
+                    data: ['2019-06-01', '2019-07-01', '2019-08-01'],
                     label: {
                         formatter: function (s) {
                             return (new Date(s)).getMonth()+1+'月';
                         }
-                    },
+                    }
                 },
                 tooltip: {
                     trigger: 'axis',
@@ -88,6 +105,41 @@
                     bottom: '10%',
                     containLabel: true
                 },
+                graphic: {
+            type: 'group',
+            rotation: Math.PI / 4*3,
+            bounding: 'raw',
+            right: 110,
+            top: 110,
+            z: 100,
+            children: [
+                {
+                    type: 'rect',
+                    left: 'center',
+                    top: 'center',
+                    z: 100,
+                    shape: {
+                        width: 400,
+                        height: 50
+                    },
+                    style: {
+                        fill: 'rgba(0,0,0,0.3)'
+                    }
+                },
+                {
+                    type: 'text',
+                    rotation: Math.PI,
+                    left: 'center',
+                    top: 'center',
+                    z: 100,
+                    style: {
+                        fill: '#fff',
+                        text: '@以一持万danke',
+                        font: 'bold 26px Microsoft YaHei'
+                    }
+                }
+            ]
+        },
             },
             options: [
             //6月
@@ -95,8 +147,8 @@
                 title: {
                     top: 10,
                     left: 'center',
-                    text: '2019.6神楽めあ配信時長',
-                    subtext: '単位：分'
+                    text: '2019.6神楽めあ直播时长/配信時長',
+                    subtext: '单位：分'
                 },
                 color: ['#FF3030', '#8dcfdd', '#8dcfdd', '#FF3030', '#FF3030', '#ffe9aa', '#FF3030', '#FF3030', '#8dcfdd', '#8dcfdd', '#ffe9aa', '#0059c5', '#f45a8d'],
                 //'#FF3030'油管红, '#f45a8d'B站粉, '#0059c5'TC蓝, '#ffe9aa'MEA黄(歌回), '#8dcfdd'Mea蓝(游戏), '#e897db'Aqua紫, '#565461'Mea黑(填补)
@@ -107,524 +159,147 @@
                 yAxis: {
                     type: 'value'
                 },
-                series: [
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[0],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[0]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[1],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[1]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[2],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[2]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[3],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[3]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[4],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[4]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[5],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[5]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[6],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[6]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[7],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[7]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[8],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[8]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[9],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[9]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[10],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[10]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[11],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[11]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[12],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[12]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[13],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[13]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[14],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[14]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[15],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[15]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[16],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[16]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[17],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[17]
-                },
-                {
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        formatter: "{c}" + "\n" + text196[17],
-                        show: true,
-                        position: 'insideTop',
-                        textStyle: {
-                            color: "#000"
-                        }
-                    },
-                    data: Data196[17]
-                },
 
-                ]
+                series:function(){
+                    var serie=[];
+                    for( var i=0;i < 19;i++){
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle:{
+                                barBorderRadius:5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + text196[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000"
+                                }
+                            },
+                            data: Data196[i],
+                        }
+                        serie.push(item);
+                    };
+                    return serie;
+                }()
             },
             //7月
             {
-            title: {
-                top: 10,
-                left: 'center',
-                text: '2019.7神楽めあ配信時長',
-                subtext: '単位：分'
-            },
-            color: ['#FF3030', '#8dcfdd', '#8dcfdd', '#0059c5', '#f45a8d', '#ffe9aa', '#8dcfdd', '#565461', '#8dcfdd', '#8dcfdd', '#FF3030', '#0059c5', '#8dcfdd', '#FF3030', '#565461', '#8dcfdd', '#ffe9aa', '#FF3030', '#8dcfdd'],
-            //'#FF3030'油管红, '#f45a8d'B站粉, '#0059c5'TC蓝, '#ffe9aa'MEA黄(歌回), '#8dcfdd'Mea蓝(游戏), '#e897db'Aqua紫, '#565461'Mea黑(填补)
-            xAxis: {
-                type: 'category',
-                data: ['7.5 ', '7.13 ', '7.15 ', '7.17 ', '7.18 ', '7.19 ', '7.24 ', '7.25 ', '7.26 ', '7.27 ', '7.28 ', '7.29 ', '7.30 ', '7.31 ', ]
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [
+                            title: {
+                                top: 10,
+                                left: 'center',
+                                text: '2019.7神楽めあ直播时长/配信時長',
+                                subtext: '单位：分'
+                            },
+                            color: ['#FF3030', '#8dcfdd', '#8dcfdd', '#0059c5', '#f45a8d', '#ffe9aa', '#8dcfdd', '#565461', '#8dcfdd', '#8dcfdd', '#FF3030', '#0059c5', '#8dcfdd', '#FF3030', '#565461', '#8dcfdd', '#ffe9aa', '#FF3030', '#8dcfdd'],
+                            //'#FF3030'油管红, '#f45a8d'B站粉, '#0059c5'TC蓝, '#ffe9aa'MEA黄(歌回), '#8dcfdd'Mea蓝(游戏), '#e897db'Aqua紫, '#565461'Mea黑(填补)
+                            xAxis: {
+                                type: 'category',
+                                data: ['7.5 ', '7.13 ', '7.15 ', '7.17 ', '7.18 ', '7.19 ', '7.24 ', '7.25 ', '7.26 ', '7.27 ', '7.28 ', '7.29 ', '7.30 ', '7.31 ', ]
+                            },
+                            yAxis: {
+                                type: 'value'
+                            },
+                            series: function () {
+                                var serie = [];
+                                for (var i = 0; i < 17; i++) {
+                                    var item = {
+                                        type: 'bar',
+                                        stack: '总量',
+                                        itemStyle: {
+                                            barBorderRadius: 5,
+                                        },
+                                        label: {
+                                            formatter: "{c}" + "\n" + text197[i],
+                                            show: true,
+                                            position: 'insideTop',
+                                            textStyle: {
+                                                color: "#000"
+                                            }
+                                        },
+                                        data: Data197[i],
+                                    }
+                                    serie.push(item);
+                                };
+                                var item = {
+                                    type: 'bar',
+                                    stack: '总量',
+                                    itemStyle: {
+                                        barBorderRadius: 5,
+                                    },
+                                    label: {
+                                        formatter: "{c}" + "\n" + text197[17],
+                                        show: true,
+                                        position: 'top',
+                                        textStyle: {
+                                            color: "#000"
+                                        }
+                                    },
+                                    data: Data197[17],
+                                }
+                                serie.push(item);
+                                var item = {
+                                    type: 'bar',
+                                    stack: '总量',
+                                    itemStyle: {
+                                        barBorderRadius: 5,
+                                    },
+                                    label: {
+                                        formatter: "{c}" + "\n" + text197[18],
+                                        show: true,
+                                        position: 'insideTop',
+                                        textStyle: {
+                                            color: "#000"
+                                        }
+                                    },
+                                    data: Data197[18],
+                                }
+                                serie.push(item);
+                                return serie;
+                            }()
+                        },
+            //8月
             {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[0],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
+                title: {
+                    top: 10,
+                    left: 'center',
+                    text: '2019.8神楽めあ直播时长/配信時長',
+                    subtext: '单位：分'
                 },
-                data: Data197[0]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[1],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
+                color: ['#FF3030', '#f45a8d', '#ffe9aa', '#FF3030', '#565461', '#FF3030', '#f45a8d', '#8dcfdd'],
+                //'#FF3030'油管红, '#f45a8d'B站粉, '#0059c5'TC蓝, '#ffe9aa'MEA黄(歌回), '#8dcfdd'Mea蓝(游戏), '#e897db'Aqua紫, '#565461'Mea黑(填补)
+                xAxis: {
+                    type: 'category',
+                    data: ['8.1', '8.2', '8.3', '8.5', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', ]
                 },
-                data: Data197[1]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[2],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
+                yAxis: {
+                    type: 'value'
                 },
-                data: Data197[2]
+                series: function () {
+                    var serie = [];
+                    for (var i = 0; i < 19; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + text198[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000"
+                                }
+                            },
+                            data: Data198[i],
+                        }
+                        serie.push(item);
+                    };
+                    return serie;
+                }()
             },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[3],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[3]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[4],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[4]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[5],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[5]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[6],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[6]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[7],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[7]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[8],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[8]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[9],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[9]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[10],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[10]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[11],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[11]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[12],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[12]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[13],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[13]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[14],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[14]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[15],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[15]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[16],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[16]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[17],
-                    show: true,
-                    position: 'top',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[17]
-            },
-            {
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    formatter: "{c}" + "\n" + text197[18],
-                    show: true,
-                    position: 'insideTop',
-                    textStyle: {
-                        color: "#000"
-                    }
-                },
-                data: Data197[18]
-            },
-            ]
-            }
             ]
         };
         // 使用刚指定的配置项和数据显示图表。
@@ -636,6 +311,51 @@
         var myChart = echarts.init(document.getElementById('main2'), 'vintage');
 
         //graphData19? 热力图+内容全文; dateList19? 全月+单日时长+内容;DateData19? 待填充
+        //2019.x
+        var graphData19x = [
+[1559318300000, 0],//占位
+        ];
+        var dateList19x = [
+    ['2019-8-1', '-', '-'],
+    ['2019-8-2', '-', '-'],
+    ['2019-8-3', '-', '-'],
+    ['2019-8-4', '-', '-'],
+    ['2019-8-5', '-', '-'],
+    ['2019-8-6', '-', '-'],
+    ['2019-8-7', '-', '-'],
+    ['2019-8-8', '-', '-'],
+    ['2019-8-9', '-', '-'],
+    ['2019-8-10', '-', '-'],
+    ['2019-8-11', '-', '-'],
+    ['2019-8-12', '-', '-'],
+    ['2019-8-13', '-', '-'],
+    ['2019-8-14', '-', '-'],
+    ['2019-8-15', '-', '-'],
+    ['2019-8-16', '-', '-'],
+    ['2019-8-17', '-', '-'],
+    ['2019-8-18', '-', '-'],
+    ['2019-8-19', '-', '-'],
+    ['2019-8-20', '-', '-'],
+    ['2019-8-21', '-', '-'],
+    ['2019-8-22', '-', '-'],
+    ['2019-8-23', '-', '-'],
+    ['2019-8-24', '-', '-'],
+    ['2019-8-25', '-', '-'],
+    ['2019-8-26', '-', '-'],
+    ['2019-8-27', '-', '-'],
+    ['2019-8-28', '-', '-'],
+    ['2019-8-29', '-', '-'],
+    ['2019-8-30', '-', '-'],
+    ['2019-8-31', '-', '-']
+        ];
+        var DateData19x = [];
+        for (var i = 0; i < dateList19x.length; i++) {
+            DateData19x.push([
+                dateList19x[i][0],
+                1,
+            ]);
+        }
+
         //2019.6
         var graphData196 = [
 [1559318300000, 0],//占位
@@ -749,6 +469,54 @@
                 1,
             ]);
         }
+        //2019.8
+        var graphData198 = [
+[1559318300000, 0],//占位
+[1564588800000, 216, '【初配信です！】えへへーーー、こんちにわぁ！<br/>【B站限定】mealice茶会♡[Alice频道]<br/>ありがとう？'],
+[1564675200000, 199, '【２回目の誕生日！！！】今回は誰にも煽らせない。<br/>【人狼ゲーム】この中に裏切り者がいるーー。'],
+[1564761600000, 185, '【にじさんじチョコ開封枠】もののべぇ....きょうもがんばってたなぁ....<br/>【B限】誕生日後日の誕生日？！'],
+[1564934400000, 122, '【マイクラ】ボッチでお話でもしようと思います。【悲しい】']
+        ];
+        var dateList198 = [
+    ['2019-8-1', 216, 'Meu\nBilibili MeAlice\n歌枠'],
+    ['2019-8-2', 199, '誕生日\n人狼ゲーム'],
+    ['2019-8-3', 185, '開封枠\nBilibili'],
+    ['2019-8-4', '-', '-'],
+    ['2019-8-5', 122, 'マイクラ'],
+    ['2019-8-6', '-', '-'],
+    ['2019-8-7', '-', '-'],
+    ['2019-8-8', '-', '-'],
+    ['2019-8-9', '-', '-'],
+    ['2019-8-10', '-', '-'],
+    ['2019-8-11', '-', '-'],
+    ['2019-8-12', '-', '-'],
+    ['2019-8-13', '-', '-'],
+    ['2019-8-14', '-', '-'],
+    ['2019-8-15', '-', '-'],
+    ['2019-8-16', '-', '-'],
+    ['2019-8-17', '-', '-'],
+    ['2019-8-18', '-', '-'],
+    ['2019-8-19', '-', '-'],
+    ['2019-8-20', '-', '-'],
+    ['2019-8-21', '-', '-'],
+    ['2019-8-22', '-', '-'],
+    ['2019-8-23', '-', '-'],
+    ['2019-8-24', '-', '-'],
+    ['2019-8-25', '-', '-'],
+    ['2019-8-26', '-', '-'],
+    ['2019-8-27', '-', '-'],
+    ['2019-8-28', '-', '-'],
+    ['2019-8-29', '-', '-'],
+    ['2019-8-30', '-', '-'],
+    ['2019-8-31', '-', '-']
+        ];
+        var DateData198 = [];
+        for (var i = 0; i < dateList198.length; i++) {
+            DateData198.push([
+                dateList198[i][0],
+                1,
+            ]);
+        }
 
         var option = {
             baseOption: {
@@ -756,9 +524,9 @@
                     tooltip: {
                         showContent: false,
                     },
-                    // y: 0
+                    // y: 0,
                     axisType: 'category',
-                    currentIndex: 1,
+                    currentIndex: 2,
                     // realtime: false,
                     // loop: false,
                     autoPlay: false,
@@ -767,7 +535,7 @@
                     // controlStyle: {
                     //     position: 'left'
                     // },
-                    data: ['2019-06-01', '2019-07-01'],
+                    data: ['2019-06-01', '2019-07-01', '2019-08-01'],
                     label: {
                         formatter: function (s) {
                             return (new Date(s)).getMonth()+1+'月';
@@ -793,7 +561,42 @@
                     textStyle: {
                         color: '#000'
                     }
+                },
+                graphic: {
+            type: 'group',
+            rotation: Math.PI / 4*3,
+            bounding: 'raw',
+            left: 110,
+            bottom: 110,
+            z: 100,
+            children: [
+                {
+                    type: 'rect',
+                    left: 'center',
+                    top: 'center',
+                    z: 100,
+                    shape: {
+                        width: 400,
+                        height: 50
+                    },
+                    style: {
+                        fill: 'rgba(0,0,0,0.3)'
+                    }
+                },
+                {
+                    type: 'text',
+                    rotation: Math.PI,
+                    left: 'center',
+                    top: 'center',
+                    z: 100,
+                    style: {
+                        fill: '#fff',
+                        text: '@以一持万danke',
+                        font: 'bold 26px Microsoft YaHei'
+                    }
                 }
+            ]
+        },
             },
             options: [
              //2019.6
@@ -801,7 +604,7 @@
                     title: {
                         top: 10,
                         left: 'center',
-                        text: '6月配信12日、18回、合計1914分'
+                        text: '6月合計12天、18次、1914分'
                     },
                     tooltip: {
                         showContent: true,
@@ -821,7 +624,7 @@
                         },
                         dayLabel: {
                             firstDay: 1,
-                            nameMap: ['日','月', '火', '水', '木', '金', '土'],
+                            nameMap: 'cn'
                         },
                         monthLabel: {
                             show: true
@@ -897,7 +700,7 @@
                     title: {
                         top: 10,
                         left: 'center',
-                        text: '7月配信14天、28回、合計3564分'
+                        text: '7月合計14天、28次、3564分'
                     },
                     tooltip: {
                         showContent: true,
@@ -917,7 +720,7 @@
                         },
                         dayLabel: {
                             firstDay: 1,
-                            nameMap: ['日','月', '火', '水', '木', '金', '土'],
+                            nameMap: 'cn'
                         },
                         monthLabel: {
                             show: true
@@ -984,6 +787,100 @@
                     type: 'heatmap',
                     coordinateSystem: 'calendar',
                     data: graphData197
+                }]
+                },
+             //2019.8
+                {
+                    title: {
+                        top: 10,
+                        left: 'center',
+                        text: '8月合計天、次、min'
+                    },
+                    tooltip: {
+                        showContent: true,
+                        confine: true,
+                        formatter: function (params) {
+                            return params.value[2];
+                        },
+                    },
+                    calendar: [{
+                        left: 'center',
+                        top: 'center',
+                        cellSize: [100, 100],
+                        yearLabel: { show: false },
+                        orient: 'vertical',
+                        itemStyle: {
+                            color: '#fef8ef',
+                        },
+                        dayLabel: {
+                            firstDay: 1,
+                            nameMap: 'cn'
+                        },
+                        monthLabel: {
+                            show: true
+                        },
+                        range: '2019-08'
+                    }],
+                    series: [{
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    var d = echarts.number.parseDate(params.value[0]);
+                                    return d.getDate() + '\n\n\n\n\n';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#a00'
+                                }
+                            }
+                        },
+                        data: DateData198
+                    },
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '' + (params.value[2] || '');
+                            },
+                            textStyle: {
+                                color: '#000'
+                            }
+                        }
+                    },
+                    data: dateList198
+                },
+               {
+                   type: 'scatter',
+                   coordinateSystem: 'calendar',
+                   symbolSize: 1,
+                   label: {
+                       normal: {
+                           show: true,
+                           formatter: function (params) {
+                               return '\n\n\n\n\n' + params.value[1] + 'min';
+                           },
+                           textStyle: {
+                               fontSize: 14,
+                               fontWeight: 700,
+                               color: '#000'
+                           }
+                       }
+                   },
+                   data: dateList198
+               },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: graphData198
                 }]
                 },
             ]
