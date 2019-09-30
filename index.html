@@ -18,7 +18,7 @@
                 timeline: {
                     // y: 0,
                     axisType: 'category',
-                    currentIndex: 3,
+                    currentIndex: 4,
                     // realtime: false,
                     // loop: false,
                     autoPlay: false,
@@ -28,7 +28,7 @@
                     //     position: 'left'
                     // },
                     symbolSize: 20,
-                    data: ['2019-06-01', '2019-07-01', '2019-08-01', '2019-09-01'],
+                    data: ['2019-06-01', '2019-07-01', '2019-08-01', '2019-09-01', '2019-10-01'],
                     label: {
                         formatter: function (s) {
                             return (new Date(s)).getMonth()+1+'月';
@@ -333,6 +333,49 @@
                 }()
 
             },
+            //10月
+            {
+                title: {
+                    top: 10,
+                    left: 'center',
+                    text: '2019.10神楽めあ直播时长/配信時長',
+                    subtext: '单位：分'
+                },
+                color: save.color1910,
+                //'#FF3030'油管红, '#f45a8d'B站粉, '#0059c5'TC蓝, '#ffe9aa'MEA黄(歌回), '#8dcfdd'Mea蓝(游戏), '#565461'Mea黑(填补)
+                xAxis: {
+                    type: 'category',
+                    data: save.day1910,
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: function () {
+                    var serie = [];
+                    for (var i = 0; i < 30; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text1910[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 10,
+                                }
+                            },
+                            data: save.Data1910[i],
+                        }
+                        serie.push(item);
+                    };
+                    return serie;
+                }()
+
+            },
             ]
         };
         // 使用刚指定的配置项和数据显示图表。
@@ -373,6 +416,14 @@
             ]);
         }
 
+        var DateData1910 = [];
+        for (var i = 0; i < save.dateList1910.length; i++) {
+            DateData1910.push([
+                save.dateList1910[i][0],
+                1,
+            ]);
+        }
+
         var option = {
             baseOption: {
                 timeline: {
@@ -381,7 +432,7 @@
                     },
                     // y: 0,
                     axisType: 'category',
-                    currentIndex: 3,
+                    currentIndex: 4,
                     // realtime: false,
                     // loop: false,
                     autoPlay: false,
@@ -391,7 +442,7 @@
                     //     position: 'left'
                     // },
                     symbolSize: 20,
-                    data: ['2019-06-01', '2019-07-01', '2019-08-01', '2019-09-01'],
+                    data: ['2019-06-01', '2019-07-01', '2019-08-01', '2019-09-01', '2019-10-01'],
                     label: {
                         formatter: function (s) {
                             return (new Date(s)).getMonth()+1+'月';
@@ -744,7 +795,7 @@
                     title: {
                         top: 10,
                         left: 'center',
-                        text: '9月'
+                        text: '9月合計14天、21次、2131分'
                     },
                     tooltip: {
                         showContent: true,
@@ -756,7 +807,7 @@
                     calendar: [{
                         left: 'center',
                         top: 'center',
-                        cellSize: [90, 90],
+                        cellSize: [100, 85.7],
                         yearLabel: { show: false },
                         orient: 'vertical',
                         itemStyle: {
@@ -780,7 +831,7 @@
                                 show: true,
                                 formatter: function (params) {
                                     var d = echarts.number.parseDate(params.value[0]);
-                                    return d.getDate() + '\n\n\n\n\n';
+                                    return d.getDate() + '\n\n\n\n';
                                 },
                                 textStyle: {
                                     fontSize: 14,
@@ -816,7 +867,7 @@
                        normal: {
                            show: true,
                            formatter: function (params) {
-                               return '\n\n\n\n\n' + params.value[1] + 'min';
+                               return '\n\n\n\n' + params.value[1] + 'min';
                            },
                            textStyle: {
                                fontSize: 14,
@@ -831,6 +882,100 @@
                     type: 'heatmap',
                     coordinateSystem: 'calendar',
                     data: save.graphData199
+                }]
+                },
+             //2019.10
+                {
+                    title: {
+                        top: 10,
+                        left: 'center',
+                        text: '10月'
+                    },
+                    tooltip: {
+                        showContent: true,
+                        confine: true,
+                        formatter: function (params) {
+                            return params.value[2];
+                        },
+                    },
+                    calendar: [{
+                        left: 'center',
+                        top: 'center',
+                        cellSize: [100, 100],
+                        yearLabel: { show: false },
+                        orient: 'vertical',
+                        itemStyle: {
+                            color: '#fef8ef',
+                        },
+                        dayLabel: {
+                            firstDay: 1,
+                            nameMap: 'cn'
+                        },
+                        monthLabel: {
+                            show: true
+                        },
+                        range: '2019-10'
+                    }],
+                    series: [{
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    var d = echarts.number.parseDate(params.value[0]);
+                                    return d.getDate() + '\n\n\n\n';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#a00'
+                                }
+                            }
+                        },
+                        data: DateData1910
+                    },
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '' + (params.value[2] || '');
+                            },
+                            textStyle: {
+                                color: '#000'
+                            }
+                        }
+                    },
+                    data: save.dateList1910
+                },
+               {
+                   type: 'scatter',
+                   coordinateSystem: 'calendar',
+                   symbolSize: 1,
+                   label: {
+                       normal: {
+                           show: true,
+                           formatter: function (params) {
+                               return '\n\n\n\n' + params.value[1] + 'min';
+                           },
+                           textStyle: {
+                               fontSize: 14,
+                               fontWeight: 700,
+                               color: '#000'
+                           }
+                       }
+                   },
+                   data: save.dateList1910
+               },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: save.graphData1910
                 }]
                 },
             ]
