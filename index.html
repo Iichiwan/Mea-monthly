@@ -346,13 +346,56 @@
                 xAxis: {
                     type: 'category',
                     data: save.day1910,
+                    "axisLabel": {
+                        "interval": 0,//解决代码
+                    }
                 },
                 yAxis: {
                     type: 'value'
                 },
                 series: function () {
                     var serie = [];
-                    for (var i = 0; i < 30; i++) {
+                    for (var i = 0; i < 17; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text1910[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 10,
+                                }
+                            },
+                            data: save.Data1910[i],
+                        }
+                        serie.push(item);
+                    };
+                    for (var i = 17; i < 18; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text1910[i],
+                                show: true,
+                                position: 'top',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 10,
+                                }
+                            },
+                            data: save.Data1910[i],
+                        }
+                        serie.push(item);
+                    };
+                    for (var i = 18; i < 30; i++) {
                         var item = {
                             type: 'bar',
                             stack: '总量',
@@ -889,7 +932,7 @@
                     title: {
                         top: 10,
                         left: 'center',
-                        text: '10月'
+                        text: '10月合計22天、36次、3157分'
                     },
                     tooltip: {
                         showContent: true,
