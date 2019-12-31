@@ -1,0 +1,1478 @@
+﻿<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="echarts.min.js"></script>
+    <script src="vintage.js"></script>
+    <script src="data2019.json"></script>
+    <title>Kaguramea-monthly</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 1000px;height:750px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'), 'vintage');
+
+        var option = {
+            baseOption: {
+                timeline: {
+                    // y: 0,
+                    axisType: 'category',
+                    currentIndex: 6,
+                    // realtime: false,
+                    // loop: false,
+                    autoPlay: false,
+                    // currentIndex: 2,
+                    playInterval: 1000,
+                    // controlStyle: {
+                    //     position: 'left'
+                    // },
+                    symbolSize: 20,
+                    data: ['2019-06-01', '2019-07-01', '2019-08-01', '2019-09-01', '2019-10-01', '2019-11-01', '2019-12-01'],
+                    label: {
+                        formatter: function (s) {
+                            return (new Date(s)).getMonth()+1+'月';
+                        }
+                    }
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    showContent: false,
+                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '10%',
+                    containLabel: true
+                },
+            graphic: {
+            type: 'group',
+            rotation: Math.PI / 4*3,
+            bounding: 'raw',
+            right: 110,
+            top: 110,
+            z: 100,
+            children: [
+                {
+                    type: 'rect',
+                    left: 'center',
+                    top: 'center',
+                    z: 100,
+                    shape: {
+                        width: 400,
+                        height: 50
+                    },
+                    style: {
+                        fill: 'rgba(0,0,0,0.3)'
+                    }
+                },
+                {
+                    type: 'text',
+                    rotation: Math.PI,
+                    left: 'center',
+                    top: 'center',
+                    z: 100,
+                    style: {
+                        fill: '#fff',
+                        text: '@以一持万danke',
+                        font: 'bold 26px Microsoft YaHei'
+                    }
+                }
+            ]
+        },
+            },
+            options: [
+            //6月
+            {
+                title: {
+                    top: 10,
+                    left: 'center',
+                    text: '2019.6神楽めあ直播时长/配信時長',
+                    subtext: '单位：分'
+                },
+                color: save.color196,
+                xAxis: {
+                    type: 'category',
+                    data: save.day196,
+                },
+                yAxis: {
+                    type: 'value',
+                },
+
+                series:function(){
+                    var serie=[];
+                    for( var i=0;i < 30;i++){
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle:{
+                                barBorderRadius:5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text196[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize:12,
+                                }
+                            },
+                            data: save.Data196[i],
+                        }
+                        serie.push(item);
+                    };
+                    return serie;
+                }()
+            },
+            //7月
+            {
+                            title: {
+                                top: 10,
+                                left: 'center',
+                                text: '2019.7神楽めあ直播时长/配信時長',
+                                subtext: '单位：分'
+                            },
+                            color: save.color197,
+                            //'#FF3030'油管红, '#f45a8d'B站粉, '#0059c5'TC蓝, '#ffe9aa'MEA黄(歌回), '#8dcfdd'Mea蓝(游戏), '#e897db'Aqua紫, '#565461'Mea黑(填补)
+                            xAxis: {
+                                type: 'category',
+                                data: save.day197,
+                            },
+                            yAxis: {
+                                type: 'value'
+                            },
+                            series: function () {
+                                var serie = [];
+                                for (var i = 0; i < 17; i++) {
+                                    var item = {
+                                        type: 'bar',
+                                        stack: '总量',
+                                        itemStyle: {
+                                            barBorderRadius: 5,
+                                        },
+                                        label: {
+                                            formatter: "{c}" + "\n" + save.text197[i],
+                                            show: true,
+                                            position: 'insideTop',
+                                            textStyle: {
+                                                color: "#000",
+                                                fontSize: 12,
+                                            }
+                                        },
+                                        data: save.Data197[i],
+                                    }
+                                    serie.push(item);
+                                };
+                                var item = {
+                                    type: 'bar',
+                                    stack: '总量',
+                                    itemStyle: {
+                                        barBorderRadius: 5,
+                                    },
+                                    label: {
+                                        formatter: "{c}" + "\n" + save.text197[17],
+                                        show: true,
+                                        position: 'top',
+                                        textStyle: {
+                                            color: "#000",
+                                            fontSize: 12,
+                                        }
+                                    },
+                                    data: save.Data197[17],
+                                }
+                                serie.push(item);
+                                for (var i = 18; i < 30; i++) {
+                                    var item = {
+                                        type: 'bar',
+                                        stack: '总量',
+                                        itemStyle: {
+                                            barBorderRadius: 5,
+                                        },
+                                        label: {
+                                            formatter: "{c}" + "\n" + save.text197[i],
+                                            show: true,
+                                            position: 'insideTop',
+                                            textStyle: {
+                                                color: "#000",
+                                                fontSize: 12,
+                                            }
+                                        },
+                                        data: save.Data197[i],
+                                    }
+                                    serie.push(item);
+                                };
+                                return serie;
+                            }()
+                        },
+            //8月
+            {
+                title: {
+                    top: 10,
+                    left: 'center',
+                    text: '2019.8神楽めあ直播时长/配信時長',
+                    subtext: '单位：分'
+                },
+                color: save.color198,
+                //'#FF3030'油管红, '#f45a8d'B站粉, '#0059c5'TC蓝, '#ffe9aa'MEA黄(歌回), '#8dcfdd'Mea蓝(游戏), '#565461'Mea黑(填补)
+                xAxis: {
+                    type: 'category',
+                    data: save.day198,
+                },
+                yAxis: {
+                    type: 'value'
+                },
+            series: function () {
+            var serie = [];
+            for (var i = 0; i < 17; i++) {
+                var item = {
+                    type: 'bar',
+                    stack: '总量',
+                    itemStyle: {
+                        barBorderRadius: 5,
+                    },
+                    label: {
+                        formatter: "{c}" + "\n" + save.text198[i],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000",
+                            fontSize: 10,
+                        }
+                    },
+                    data: save.Data198[i],
+                }
+                serie.push(item);
+            };
+            for (var i = 17; i < 19; i++) {
+                var item = {
+                    type: 'bar',
+                    stack: '总量',
+                    itemStyle: {
+                        barBorderRadius: 5,
+                    },
+                    label: {
+                        formatter: "{c}" + "\n" + save.text198[i],
+                        show: true,
+                        position: 'top',
+                        textStyle: {
+                            color: "#000",
+                            fontSize: 10,
+                        }
+                    },
+                    data: save.Data198[i],
+                }
+                serie.push(item);
+            };
+            for (var i = 19; i < 30; i++) {
+                var item = {
+                    type: 'bar',
+                    stack: '总量',
+                    itemStyle: {
+                        barBorderRadius: 5,
+                    },
+                    label: {
+                        formatter: "{c}" + "\n" + save.text198[i],
+                        show: true,
+                        position: 'insideTop',
+                        textStyle: {
+                            color: "#000",
+                            fontSize: 10,
+                        }
+                    },
+                    data: save.Data198[i],
+                }
+                serie.push(item);
+            };
+            return serie;
+        }()
+
+            },
+            //9月
+            {
+                title: {
+                    top: 10,
+                    left: 'center',
+                    text: '2019.9神楽めあ直播时长/配信時長',
+                    subtext: '单位：分'
+                },
+                color: save.color199,
+                //'#FF3030'油管红, '#f45a8d'B站粉, '#0059c5'TC蓝, '#ffe9aa'MEA黄(歌回), '#8dcfdd'Mea蓝(游戏), '#565461'Mea黑(填补)
+                xAxis: {
+                    type: 'category',
+                    data: save.day199,
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: function () {
+                    var serie = [];
+                    for (var i = 0; i < 30; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text199[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 10,
+                                }
+                            },
+                            data: save.Data199[i],
+                        }
+                        serie.push(item);
+                    };
+                    return serie;
+                }()
+
+            },
+            //10月
+            {
+                title: {
+                    top: 10,
+                    left: 'center',
+                    text: '2019.10神楽めあ直播时长/配信時長',
+                    subtext: '单位：分'
+                },
+                color: save.color1910,
+                //'#FF3030'油管红, '#f45a8d'B站粉, '#0059c5'TC蓝, '#ffe9aa'MEA黄(歌回), '#8dcfdd'Mea蓝(游戏), '#565461'Mea黑(填补)
+                xAxis: {
+                    type: 'category',
+                    data: save.day1910,
+                    "axisLabel": {
+                        "interval": 0,//解决代码
+                    }
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: function () {
+                    var serie = [];
+                    for (var i = 0; i < 17; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text1910[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 10,
+                                }
+                            },
+                            data: save.Data1910[i],
+                        }
+                        serie.push(item);
+                    };
+                    for (var i = 17; i < 18; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text1910[i],
+                                show: true,
+                                position: 'top',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 10,
+                                }
+                            },
+                            data: save.Data1910[i],
+                        }
+                        serie.push(item);
+                    };
+                    for (var i = 18; i < 30; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text1910[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 10,
+                                }
+                            },
+                            data: save.Data1910[i],
+                        }
+                        serie.push(item);
+                    };
+                    return serie;
+                }()
+
+            },
+            //11月
+            {
+                title: {
+                    top: 10,
+                    left: 'center',
+                    text: '2019.11神楽めあ直播时长/配信時長',
+                    subtext: '单位：分'
+                },
+                color: save.color1911,
+                //'#FF3030'油管红, '#f45a8d'B站粉, '#0059c5'TC蓝, '#ffe9aa'MEA黄(歌回), '#8dcfdd'Mea蓝(游戏), '#565461'Mea黑(填补)
+                xAxis: {
+                    type: 'category',
+                    data: save.day1911,
+                    "axisLabel": {
+                        "interval": 0,//解决代码
+                    }
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: function () {
+                    var serie = [];
+                    for (var i = 0; i < 30; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text1911[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data1911[i],
+                        }
+                        serie.push(item);
+                    };
+                    return serie;
+                }()
+
+            },
+            //12月
+            {
+                title: {
+                    top: 10,
+                    left: 'center',
+                    text: '2019.12神楽めあ直播时长/配信時長',
+                    subtext: '单位：分'
+                },
+                color: save.color1912,
+                //'#FF3030'油管红, '#f45a8d'B站粉, '#0059c5'TC蓝, '#ffe9aa'MEA黄(歌回), '#8dcfdd'Mea蓝(游戏), '#565461'Mea黑(填补)
+                xAxis: {
+                    type: 'category',
+                    data: save.day1912,
+                    "axisLabel": {
+                        "interval": 0,//解决代码
+                    }
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: function () {//0 10 16 22
+                    var serie = [];
+                    for (var i = 0; i < 1; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            z: 250,
+                            label: {
+                                formatter: "{c}" + "\n" + save.text1912[i],
+                                show: true,
+                                position: 'top',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data1912[i],
+                        }
+                        serie.push(item);
+                    };
+                    for (var i = 1; i < 10; i++) {
+                            var item = {
+                                type: 'bar',
+                                stack: '总量',
+                                itemStyle: {
+                                    barBorderRadius: 5,
+                                },
+                                z:200,
+                                label: {
+                                    formatter: "{c}" + "\n" + save.text1912[i],
+                                    show: true,
+                                    position: 'insideTop',
+                                    textStyle: {
+                                        color: "#000",
+                                        fontSize: 11,
+                                    }
+                                },
+                                data: save.Data1912[i],
+                            }
+                            serie.push(item);
+                    };
+                    for (var i = 10; i < 11; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            z: 250,
+                            label: {
+                                formatter: "{c}" + "\n" + save.text1912[i],
+                                show: true,
+                                position: 'top',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data1912[i],
+                        }
+                        serie.push(item);
+                    };
+                    for (var i = 11; i < 16; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            z: 200,
+                            label: {
+                                formatter: "{c}" + "\n" + save.text1912[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data1912[i],
+                        }
+                        serie.push(item);
+                    };
+                    for (var i = 16; i < 17; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            z: 250,
+                            label: {
+                                formatter: "{c}" + "\n" + save.text1912[i],
+                                show: true,
+                                position: 'top',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data1912[i],
+                        }
+                        serie.push(item);
+                    };
+                    for (var i = 17; i < 22; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            z: 200,
+                            label: {
+                                formatter: "{c}" + "\n" + save.text1912[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data1912[i],
+                        }
+                        serie.push(item);
+                    };
+                    for (var i = 22; i < 23; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            z: 250,
+                            label: {
+                                formatter: "{c}" + "\n" + save.text1912[i],
+                                show: true,
+                                position: 'top',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data1912[i],
+                        }
+                        serie.push(item);
+                    };
+                    for (var i = 23; i < 30; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            z: 200,
+                            label: {
+                                formatter: "{c}" + "\n" + save.text1912[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data1912[i],
+                        }
+                        serie.push(item);
+                    };
+                    return serie;
+                }()
+
+            },
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+    <div id="main2" style="width: 1000px;height:750px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main2'), 'vintage');
+
+        //graphData19? 热力图+内容全文; dateList19? 全月+单日时长+内容;DateData19? 待填充
+        var DateData196 = [];
+        for (var i = 0; i < save.dateList196.length; i++) {
+            DateData196.push([
+                save.dateList196[i][0],
+                1,
+            ]);
+        }
+        var DateData197 = [];
+        for (var i = 0; i < save.dateList197.length; i++) {
+            DateData197.push([
+                save.dateList197[i][0],
+                1,
+            ]);
+        }
+        var DateData198 = [];
+        for (var i = 0; i < save.dateList198.length; i++) {
+            DateData198.push([
+                save.dateList198[i][0],
+                1,
+            ]);
+        }
+        var DateData199 = [];
+        for (var i = 0; i < save.dateList199.length; i++) {
+            DateData199.push([
+                save.dateList199[i][0],
+                1,
+            ]);
+        }
+
+        var DateData1910 = [];
+        for (var i = 0; i < save.dateList1910.length; i++) {
+            DateData1910.push([
+                save.dateList1910[i][0],
+                1,
+            ]);
+        }
+
+        var DateData1911 = [];
+        for (var i = 0; i < save.dateList1911.length; i++) {
+            DateData1911.push([
+                save.dateList1911[i][0],
+                1,
+            ]);
+        }
+
+        var DateData1912 = [];
+        for (var i = 0; i < save.dateList1912.length; i++) {
+            DateData1912.push([
+                save.dateList1912[i][0],
+                1,
+            ]);
+        }
+
+        var option = {
+            baseOption: {
+                timeline: {
+                    tooltip: {
+                        showContent: false,
+                    },
+                    // y: 0,
+                    axisType: 'category',
+                    currentIndex: 6,
+                    // realtime: false,
+                    // loop: false,
+                    autoPlay: false,
+                    // currentIndex: 2,
+                    playInterval: 1000,
+                    // controlStyle: {
+                    //     position: 'left'
+                    // },
+                    symbolSize: 20,
+                    data: ['2019-06-01', '2019-07-01', '2019-08-01', '2019-09-01', '2019-10-01', '2019-11-01', '2019-12-01'],
+                    label: {
+                        formatter: function (s) {
+                            return (new Date(s)).getMonth()+1+'月';
+                        }
+                    }
+                },
+
+                calculable: true,
+                grid: {
+                    top: 80,
+                    bottom: 100
+                },
+                visualMap: {
+                    min: 0,
+                    max: 720,
+                    splitNumber: 6,
+                    inRange: {
+                        color: ['#d94e5d', '#eac736', '#50a3ba'].reverse()
+                    },
+                    orient: 'horizontal',
+                    left: 'center',
+                    bottom: 80,
+                    textStyle: {
+                        color: '#000'
+                    }
+                },
+                graphic: {
+            type: 'group',
+            rotation: Math.PI / 4*3,
+            bounding: 'raw',
+            left: 110,
+            bottom: 110,
+            z: 100,
+            children: [
+                {
+                    type: 'rect',
+                    left: 'center',
+                    top: 'center',
+                    z: 100,
+                    shape: {
+                        width: 400,
+                        height: 50
+                    },
+                    style: {
+                        fill: 'rgba(0,0,0,0.3)'
+                    }
+                },
+                {
+                    type: 'text',
+                    rotation: Math.PI,
+                    left: 'center',
+                    top: 'center',
+                    z: 100,
+                    style: {
+                        fill: '#fff',
+                        text: '@以一持万danke',
+                        font: 'bold 26px Microsoft YaHei'
+                    }
+                }
+            ]
+        },
+            },
+            options: [
+             //2019.6
+                {
+                    title: {
+                        top: 10,
+                        left: 'center',
+                        text: '6月合計12天、18次、1914分'
+                    },
+                    tooltip: {
+                        showContent: true,
+                        confine: true,
+                        formatter: function (params) {
+                            return params.value[2];
+                        },
+                        },
+                    calendar: [{
+                        left: 'center',
+                        top: 'center',
+                        cellSize: [100, 100],
+                        yearLabel: { show: false },
+                        orient: 'vertical',
+                        itemStyle:{
+                            color: '#fef8ef',
+                        },
+                        dayLabel: {
+                            firstDay: 1,
+                            nameMap: 'cn'
+                        },
+                        monthLabel: {
+                            show: true
+                        },
+                        range: '2019-06'
+                    }],
+                    series: [{
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    var d = echarts.number.parseDate(params.value[0]);
+                                    return d.getDate() + '\n\n\n\n\n';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#a00'
+                                }
+                            }
+                        },
+                        data: DateData196
+                    },
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '' + (params.value[2] || '');
+                            },
+                            textStyle: {
+                                color: '#000'
+                            }
+                        }
+                    },
+                    data: save.dateList196
+                },
+               {
+                   type: 'scatter',
+                   coordinateSystem: 'calendar',
+                   symbolSize: 1,
+                   label: {
+                       normal: {
+                           show: true,
+                           formatter: function (params) {
+                               return '\n\n\n\n\n' + params.value[1] + 'min';
+                           },
+                           textStyle: {
+                               fontSize: 14,
+                               fontWeight: 700,
+                               color: '#000'
+                           }
+                       }
+                   },
+                   data: save.dateList196
+               },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: save.graphData196
+                },
+                ]
+                },
+
+             //2019.7
+                {
+                    title: {
+                        top: 10,
+                        left: 'center',
+                        text: '7月合計14天、28次、3564分'
+                    },
+                    tooltip: {
+                        showContent: true,
+                        confine: true,
+                        formatter: function (params) {
+                            return params.value[2];
+                        },
+                    },
+                    calendar: [{
+                        left: 'center',
+                        top: 'center',
+                        cellSize: [100, 100],
+                        yearLabel: { show: false },
+                        orient: 'vertical',
+                        itemStyle: {
+                            color: '#fef8ef',
+                        },
+                        dayLabel: {
+                            firstDay: 1,
+                            nameMap: 'cn'
+                        },
+                        monthLabel: {
+                            show: true
+                        },
+                        range: '2019-07'
+                    }],
+                    series: [{
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    var d = echarts.number.parseDate(params.value[0]);
+                                    return d.getDate() + '\n\n\n\n\n';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#a00'
+                                }
+                            }
+                        },
+                        data: DateData197
+                    },
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '' + (params.value[2] || '');
+                            },
+                            textStyle: {
+                                color: '#000'
+                            }
+                        }
+                    },
+                    data: save.dateList197
+                },
+               {
+                   type: 'scatter',
+                   coordinateSystem: 'calendar',
+                   symbolSize: 1,
+                   label: {
+                       normal: {
+                           show: true,
+                           formatter: function (params) {
+                               return '\n\n\n\n\n' + params.value[1] + 'min';
+                           },
+                           textStyle: {
+                               fontSize: 14,
+                               fontWeight: 700,
+                               color: '#000'
+                           }
+                       }
+                   },
+                   data: save.dateList197
+               },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: save.graphData197
+                }]
+                },
+             //2019.8
+                {
+                    title: {
+                        top: 10,
+                        left: 'center',
+                        text: '8月合計23天、45次、4652分'
+                    },
+                    tooltip: {
+                        showContent: true,
+                        confine: true,
+                        formatter: function (params) {
+                            return params.value[2];
+                        },
+                    },
+                    calendar: [{
+                        left: 'center',
+                        top: 'center',
+                        cellSize: [100, 100],
+                        yearLabel: { show: false },
+                        orient: 'vertical',
+                        itemStyle: {
+                            color: '#fef8ef',
+                        },
+                        dayLabel: {
+                            firstDay: 1,
+                            nameMap: 'cn'
+                        },
+                        monthLabel: {
+                            show: true
+                        },
+                        range: '2019-08'
+                    }],
+                    series: [{
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    var d = echarts.number.parseDate(params.value[0]);
+                                    return d.getDate() + '\n\n\n\n\n';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#a00'
+                                }
+                            }
+                        },
+                        data: DateData198
+                    },
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '' + (params.value[2] || '');
+                            },
+                            textStyle: {
+                                color: '#000'
+                            }
+                        }
+                    },
+                    data: save.dateList198
+                },
+               {
+                   type: 'scatter',
+                   coordinateSystem: 'calendar',
+                   symbolSize: 1,
+                   label: {
+                       normal: {
+                           show: true,
+                           formatter: function (params) {
+                               return '\n\n\n\n\n' + params.value[1] + 'min';
+                           },
+                           textStyle: {
+                               fontSize: 14,
+                               fontWeight: 700,
+                               color: '#000'
+                           }
+                       }
+                   },
+                   data: save.dateList198
+               },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: save.graphData198
+                }]
+                },
+             //2019.9
+                {
+                    title: {
+                        top: 10,
+                        left: 'center',
+                        text: '9月合計14天、21次、2131分'
+                    },
+                    tooltip: {
+                        showContent: true,
+                        confine: true,
+                        formatter: function (params) {
+                            return params.value[2];
+                        },
+                    },
+                    calendar: [{
+                        left: 'center',
+                        top: 'center',
+                        cellSize: [100, 85.7],
+                        yearLabel: { show: false },
+                        orient: 'vertical',
+                        itemStyle: {
+                            color: '#fef8ef',
+                        },
+                        dayLabel: {
+                            firstDay: 1,
+                            nameMap: 'cn'
+                        },
+                        monthLabel: {
+                            show: true
+                        },
+                        range: '2019-09'
+                    }],
+                    series: [{
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    var d = echarts.number.parseDate(params.value[0]);
+                                    return d.getDate() + '\n\n\n\n';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#a00'
+                                }
+                            }
+                        },
+                        data: DateData199
+                    },
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '' + (params.value[2] || '');
+                            },
+                            textStyle: {
+                                color: '#000'
+                            }
+                        }
+                    },
+                    data: save.dateList199
+                },
+               {
+                   type: 'scatter',
+                   coordinateSystem: 'calendar',
+                   symbolSize: 1,
+                   label: {
+                       normal: {
+                           show: true,
+                           formatter: function (params) {
+                               return '\n\n\n\n' + params.value[1] + 'min';
+                           },
+                           textStyle: {
+                               fontSize: 14,
+                               fontWeight: 700,
+                               color: '#000'
+                           }
+                       }
+                   },
+                   data: save.dateList199
+               },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: save.graphData199
+                }]
+                },
+             //2019.10
+                {
+                    title: {
+                        top: 10,
+                        left: 'center',
+                        text: '10月合計22天、36次、3157分'
+                    },
+                    tooltip: {
+                        showContent: true,
+                        confine: true,
+                        formatter: function (params) {
+                            return params.value[2];
+                        },
+                    },
+                    calendar: [{
+                        left: 'center',
+                        top: 'center',
+                        cellSize: [100, 100],
+                        yearLabel: { show: false },
+                        orient: 'vertical',
+                        itemStyle: {
+                            color: '#fef8ef',
+                        },
+                        dayLabel: {
+                            firstDay: 1,
+                            nameMap: 'cn'
+                        },
+                        monthLabel: {
+                            show: true
+                        },
+                        range: '2019-10'
+                    }],
+                    series: [{
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    var d = echarts.number.parseDate(params.value[0]);
+                                    return d.getDate() + '\n\n\n\n';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#a00'
+                                }
+                            }
+                        },
+                        data: DateData1910
+                    },
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '' + (params.value[2] || '');
+                            },
+                            textStyle: {
+                                color: '#000'
+                            }
+                        }
+                    },
+                    data: save.dateList1910
+                },
+               {
+                   type: 'scatter',
+                   coordinateSystem: 'calendar',
+                   symbolSize: 1,
+                   label: {
+                       normal: {
+                           show: true,
+                           formatter: function (params) {
+                               return '\n\n\n\n' + params.value[1] + 'min';
+                           },
+                           textStyle: {
+                               fontSize: 14,
+                               fontWeight: 700,
+                               color: '#000'
+                           }
+                       }
+                   },
+                   data: save.dateList1910
+               },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: save.graphData1910
+                }]
+                },
+             //2019.11
+                {
+                    title: {
+                        top: 10,
+                        left: 'center',
+                        text: '11月合計17天、29次、2117分'
+                    },
+                    tooltip: {
+                        showContent: true,
+                        confine: true,
+                        formatter: function (params) {
+                            return params.value[2];
+                        },
+                    },
+                    calendar: [{
+                        left: 'center',
+                        top: 'center',
+                        cellSize: [100, 100],
+                        yearLabel: { show: false },
+                        orient: 'vertical',
+                        itemStyle: {
+                            color: '#fef8ef',
+                        },
+                        dayLabel: {
+                            firstDay: 1,
+                            nameMap: 'cn'
+                        },
+                        monthLabel: {
+                            show: true
+                        },
+                        range: '2019-11'
+                    }],
+                    series: [{
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    var d = echarts.number.parseDate(params.value[0]);
+                                    return d.getDate() + '\n\n\n\n';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#a00'
+                                }
+                            }
+                        },
+                        data: DateData1911
+                    },
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '' + (params.value[2] || '');
+                            },
+                            textStyle: {
+                                color: '#000'
+                            }
+                        }
+                    },
+                    data: save.dateList1911
+                },
+               {
+                   type: 'scatter',
+                   coordinateSystem: 'calendar',
+                   symbolSize: 1,
+                   label: {
+                       normal: {
+                           show: true,
+                           formatter: function (params) {
+                               return '\n\n\n\n' + params.value[1] + 'min';
+                           },
+                           textStyle: {
+                               fontSize: 14,
+                               fontWeight: 700,
+                               color: '#000'
+                           }
+                       }
+                   },
+                   data: save.dateList1911
+               },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: save.graphData1911
+                }]
+                },
+             //2019.12
+                {
+                    title: {
+                        top: 10,
+                        left: 'center',
+                        text: '12月合計21天、 43次、3700分'
+                    },
+                    tooltip: {
+                        showContent: true,
+                        confine: true,
+                        formatter: function (params) {
+                            return params.value[2];
+                        },
+                    },
+                    calendar: [{
+                        left: 'center',
+                        top: 'center',
+                        cellSize: [100, 85.7],
+                        yearLabel: { show: false },
+                        orient: 'vertical',
+                        itemStyle: {
+                            color: '#fef8ef',
+                        },
+                        dayLabel: {
+                            firstDay: 1,
+                            nameMap: 'cn'
+                        },
+                        monthLabel: {
+                            show: true
+                        },
+                        range: '2019-12'
+                    }],
+                    series: [{
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    var d = echarts.number.parseDate(params.value[0]);
+                                    return d.getDate() + '\n\n\n\n';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#a00'
+                                }
+                            }
+                        },
+                        data: DateData1912
+                    },
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '' + (params.value[2] || '');
+                            },
+                            textStyle: {
+                                fontSize: 10,
+                                color: '#000'
+                            }
+                        }
+                    },
+                    data: save.dateList1912
+                },
+               {
+                   type: 'scatter',
+                   coordinateSystem: 'calendar',
+                   symbolSize: 1,
+                   label: {
+                       normal: {
+                           show: true,
+                           formatter: function (params) {
+                               return '\n\n\n\n' + params.value[1] + 'min';
+                           },
+                           textStyle: {
+                               fontSize: 14,
+                               fontWeight: 700,
+                               color: '#000'
+                           }
+                       }
+                   },
+                   data: save.dateList1912
+               },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: save.graphData1912
+                }]
+                },
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        /*myChart.on('click', function (params) {
+            if (params.seriesType === 'heatmap') window.open('https://' + encodeURIComponent(params.data[3]));
+        });*/
+    </script>
+</body>
+</html>
