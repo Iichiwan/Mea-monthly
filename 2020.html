@@ -1,0 +1,339 @@
+﻿<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="echarts.min.js"></script>
+    <script src="vintage.js"></script>
+    <script src="data2020.json"></script>
+    <title>Kaguramea-monthly</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 1000px;height:750px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'), 'vintage');
+
+        var option = {
+            baseOption: {
+                timeline: {
+                    // y: 0,
+                    axisType: 'category',
+                    currentIndex: 0,
+                    // realtime: false,
+                    // loop: false,
+                    autoPlay: false,
+                    // currentIndex: 2,
+                    playInterval: 1000,
+                    // controlStyle: {
+                    //     position: 'left'
+                    // },
+                    symbolSize: 20,
+                    data: ['2020-01-01'],
+                    label: {
+                        formatter: function (s) {
+                            return (new Date(s)).getMonth()+1+'月';
+                        }
+                    }
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    showContent: false,
+                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '10%',
+                    containLabel: true
+                },
+            graphic: {
+            type: 'group',
+            rotation: Math.PI / 4*3,
+            bounding: 'raw',
+            right: 110,
+            top: 110,
+            z: 100,
+            children: [
+                {
+                    type: 'rect',
+                    left: 'center',
+                    top: 'center',
+                    z: 100,
+                    shape: {
+                        width: 400,
+                        height: 50
+                    },
+                    style: {
+                        fill: 'rgba(0,0,0,0.3)'
+                    }
+                },
+                {
+                    type: 'text',
+                    rotation: Math.PI,
+                    left: 'center',
+                    top: 'center',
+                    z: 100,
+                    style: {
+                        fill: '#fff',
+                        text: '@以一持万danke',
+                        font: 'bold 26px Microsoft YaHei'
+                    }
+                }
+            ]
+        },
+            },
+            options: [
+            //1月
+            {
+                title: {
+                    top: 10,
+                    left: 'center',
+                    text: '2020.1神楽めあ直播时长/配信時長',
+                    subtext: '单位：分'
+                },
+                color: save.color2001,
+                xAxis: {
+                    type: 'category',
+                    data: save.day2001,
+                    "axisLabel": {
+                        "interval": 0,//解决代码
+                    }
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: function () {
+                    var serie = [];
+                    for (var i = 0; i < 30; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text2001[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data2001[i],
+                        }
+                        serie.push(item);
+                    };
+                    return serie;
+                }()
+
+            },
+
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+    <div id="main2" style="width: 1000px;height:750px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main2'), 'vintage');
+
+        //graphData19? 热力图+内容全文; dateList19? 全月+单日时长+内容;DateData19? 待填充
+
+        var DateData2001 = [];
+        for (var i = 0; i < save.dateList2001.length; i++) {
+            DateData2001.push([
+                save.dateList2001[i][0],
+                1,
+            ]);
+        }
+
+        var option = {
+            baseOption: {
+                timeline: {
+                    tooltip: {
+                        showContent: false,
+                    },
+                    // y: 0,
+                    axisType: 'category',
+                    currentIndex: 0,
+                    // realtime: false,
+                    // loop: false,
+                    autoPlay: false,
+                    // currentIndex: 2,
+                    playInterval: 1000,
+                    // controlStyle: {
+                    //     position: 'left'
+                    // },
+                    symbolSize: 20,
+                    data: ['2020-01-01'],
+                    label: {
+                        formatter: function (s) {
+                            return (new Date(s)).getMonth()+1+'月';
+                        }
+                    }
+                },
+
+                calculable: true,
+                grid: {
+                    top: 80,
+                    bottom: 100
+                },
+                visualMap: {
+                    min: 0,
+                    max: 720,
+                    splitNumber: 6,
+                    inRange: {
+                        color: ['#d94e5d', '#eac736', '#50a3ba'].reverse()
+                    },
+                    orient: 'horizontal',
+                    left: 'center',
+                    bottom: 80,
+                    textStyle: {
+                        color: '#000'
+                    }
+                },
+                graphic: {
+            type: 'group',
+            rotation: Math.PI / 4*3,
+            bounding: 'raw',
+            left: 110,
+            bottom: 110,
+            z: 100,
+            children: [
+                {
+                    type: 'rect',
+                    left: 'center',
+                    top: 'center',
+                    z: 100,
+                    shape: {
+                        width: 400,
+                        height: 50
+                    },
+                    style: {
+                        fill: 'rgba(0,0,0,0.3)'
+                    }
+                },
+                {
+                    type: 'text',
+                    rotation: Math.PI,
+                    left: 'center',
+                    top: 'center',
+                    z: 100,
+                    style: {
+                        fill: '#fff',
+                        text: '@以一持万danke',
+                        font: 'bold 26px Microsoft YaHei'
+                    }
+                }
+            ]
+        },
+            },
+            options: [
+             //2019.11
+                {
+                    title: {
+                        top: 10,
+                        left: 'center',
+                        text: '1月'
+                    },
+                    tooltip: {
+                        showContent: true,
+                        confine: true,
+                        formatter: function (params) {
+                            return params.value[2];
+                        },
+                    },
+                    calendar: [{
+                        left: 'center',
+                        top: 'center',
+                        cellSize: [100, 100],
+                        yearLabel: { show: false },
+                        orient: 'vertical',
+                        itemStyle: {
+                            color: '#fef8ef',
+                        },
+                        dayLabel: {
+                            firstDay: 1,
+                            nameMap: 'cn'
+                        },
+                        monthLabel: {
+                            show: true
+                        },
+                        range: '2019-11'
+                    }],
+                    series: [{
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    var d = echarts.number.parseDate(params.value[0]);
+                                    return d.getDate() + '\n\n\n\n';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#a00'
+                                }
+                            }
+                        },
+                        data: DateData2001
+                    },
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '' + (params.value[2] || '');
+                            },
+                            textStyle: {
+                                color: '#000'
+                            }
+                        }
+                    },
+                    data: save.dateList2001
+                },
+               {
+                   type: 'scatter',
+                   coordinateSystem: 'calendar',
+                   symbolSize: 1,
+                   label: {
+                       normal: {
+                           show: true,
+                           formatter: function (params) {
+                               return '\n\n\n\n' + params.value[1] + 'min';
+                           },
+                           textStyle: {
+                               fontSize: 14,
+                               fontWeight: 700,
+                               color: '#000'
+                           }
+                       }
+                   },
+                   data: save.dateList2001
+               },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: save.graphData2001
+                }]
+                },
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        /*myChart.on('click', function (params) {
+            if (params.seriesType === 'heatmap') window.open('https://' + encodeURIComponent(params.data[3]));
+        });*/
+    </script>
+</body>
+</html>
