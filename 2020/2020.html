@@ -174,16 +174,18 @@
                         formatter: function (s) {
                             return (new Date(s)).getMonth()+1+'月';
                         }
-                    }
+                    },
+                    top:675,
                 },
-
+                /*
                 calculable: true,
                 grid: {
                     top: 80,
                     bottom: 100
                 },
+                */
                 visualMap: {
-                    pieces: [
+                    /*pieces: [
                         { min: 600 }, // 不指定 max，表示 max 为无限大（Infinity）。
                         { min: 300, max: 600 },
                         { min: 180, max: 300 },
@@ -191,9 +193,13 @@
                         { min: 60, max: 120 },
                         {max: 60}     // 不指定 min，表示 min 为无限大（-Infinity）。
 
-                    ],
+                    ],*/
+                    min: 0,
+                    max: 600,
+                    //itemHeight:500,
+                    show:false,
                     inRange: {
-                        color: ['#c1232b', '#e87c25', '#fcce10', '#26c0c0'].reverse()//
+                        color: ['#c1232b', '#e87c25', '#fcce10', '#26c0c0'].reverse()
                     },
                     orient: 'horizontal',
                     left: 'center',
