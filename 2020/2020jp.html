@@ -18,7 +18,7 @@
                 timeline: {
                     // y: 0,
                     axisType: 'category',
-                    currentIndex: 1,
+                    currentIndex: 3,
                     // realtime: false,
                     // loop: false,
                     autoPlay: false,
@@ -28,7 +28,7 @@
                     //     position: 'left'
                     // },
                     symbolSize: 20,
-                    data: ['2020-01-01', '2020-02-01'],
+                    data: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01'],
                     label: {
                         formatter: function (s) {
                             return (new Date(s)).getMonth()+1+'月';
@@ -213,6 +213,206 @@
                 }()
 
             },
+            //3月
+            {
+                title: {
+                    top: 10,
+                    left: 'center',
+                    text: '2020.3神楽めあ直播时长/配信時長',
+                    subtext: '单位：分'
+                },
+                color: save.color2003,
+                xAxis: {
+                    type: 'category',
+                    data: save.day2003,
+                    "axisLabel": {
+                        "interval": 0,//解决代码
+                    }
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: function () {
+                    var serie = [];
+                    var item = {//0
+                        type: 'bar',
+                        stack: '总量',
+                        itemStyle: {
+                            barBorderRadius: 5,
+                        },
+                        label: {
+                            formatter: "{c}" + "\n" + save.text2003[0],
+                            show: true,
+                            position: 'insideTop',
+                            textStyle: {
+                                color: "#000",
+                                fontSize: 11,
+                            }
+                        },
+                        data: save.Data2003[0],
+                    }
+                    serie.push(item);
+                    var item = {//1
+                        type: 'bar',
+                        stack: '总量',
+                        itemStyle: {
+                            barBorderRadius: 5,
+                        },
+                        label: {
+                            formatter: "8" + "\n" + save.text2003[1],
+                            show: true,
+                            position: 'insideTop',
+                            textStyle: {
+                                color: "#000",
+                                fontSize: 11,
+                            }
+                        },
+                        data: save.Data2003[1],
+                    }
+                    serie.push(item);
+                    var item = {//2
+                        type: 'bar',
+                        stack: '总量',
+                        itemStyle: {
+                            barBorderRadius: 5,
+                        },
+                        label: {
+                            formatter: "{c}" + "\n" + save.text2003[2],
+                            show: true,
+                            position: 'top',
+                            textStyle: {
+                                color: "#000",
+                                fontSize: 11,
+                            }
+                        },
+                        data: save.Data2003[2],
+                    }
+                    serie.push(item);
+                    for (var i = 3; i < 10; i++) {//3~9
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text2003[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data2003[i],
+                        }
+                        serie.push(item);
+                    };
+                    var item = {//10
+                        type: 'bar',
+                        stack: '总量',
+                        itemStyle: {
+                            barBorderRadius: 5,
+                        },
+                        label: {
+                            formatter: "{c}" + "\n" + save.text2003[10],
+                            show: true,
+                            position: 'top',
+                            textStyle: {
+                                color: "#000",
+                                fontSize: 11,
+                            }
+                        },
+                        data: save.Data2003[10],
+                    }
+                    serie.push(item);
+                    for (var i = 11; i < 21; i++) {//11~20
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text2003[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data2003[i],
+                        }
+                        serie.push(item);
+                    };
+                    var item = {//21
+                        type: 'bar',
+                        stack: '总量',
+                        itemStyle: {
+                            barBorderRadius: 5,
+                        },
+                        label: {
+                            formatter: "{c}" + "\n" + save.text2003[21],
+                            show: true,
+                            position: 'insideTop',
+                            textStyle: {
+                                color: "#000",
+                                fontSize: 10,
+                            }
+                        },
+                        data: save.Data2003[21],
+                    }
+                    serie.push(item);
+                    return serie;
+                }()
+
+            },
+            //4月
+            {
+                title: {
+                    top: 10,
+                    left: 'center',
+                    text: '2020.4神楽めあ直播时长/配信時長',
+                    subtext: '单位：分'
+                },
+                color: save.color2004,
+                xAxis: {
+                    type: 'category',
+                    data: save.day2004,
+                    "axisLabel": {
+                        "interval": 0,//解决代码
+                    }
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: function () {
+                    var serie = [];
+                    for (var i = 0; i < 30; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text2004[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data2004[i],
+                        }
+                        serie.push(item);
+                    };
+                    return serie;
+                }()
+
+            },
             ]
         };
         // 使用刚指定的配置项和数据显示图表。
@@ -225,6 +425,7 @@
 
         //graphData19? 热力图+内容全文; dateList19? 全月+单日时长+内容;DateData19? 待填充
 
+        //赋值----------------------------------------------
         var DateData2001 = [];
         for (var i = 0; i < save.dateList2001.length; i++) {
             DateData2001.push([
@@ -239,6 +440,22 @@
                 1,
             ]);
         }
+        var DateData2003 = [];
+        for (var i = 0; i < save.dateList2003.length; i++) {
+            DateData2003.push([
+                save.dateList2003[i][0],
+                1,
+            ]);
+        }
+        var DateData2004 = [];
+        for (var i = 0; i < save.dateList2004.length; i++) {
+            DateData2004.push([
+                save.dateList2004[i][0],
+                1,
+            ]);
+        }
+        //赋值----------------------------------------------
+
 
         var option = {
             baseOption: {
@@ -248,7 +465,7 @@
                     },
                     // y: 0,
                     axisType: 'category',
-                    currentIndex: 1,
+                    currentIndex: 3,
                     // realtime: false,
                     // loop: false,
                     autoPlay: false,
@@ -258,7 +475,7 @@
                     //     position: 'left'
                     // },
                     symbolSize: 20,
-                    data: ['2020-01-01','2020-02-01'],
+                    data: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01'],
                     label: {
                         formatter: function (s) {
                             return (new Date(s)).getMonth()+1+'月';
@@ -524,6 +741,199 @@
                     type: 'heatmap',
                     coordinateSystem: 'calendar',
                     data: save.graphData2002
+                }
+                    ]
+                },
+             //2020.03
+                {
+                    title: {
+                        top: 10,
+                        left: 'center',
+                        text: '3月配信时长5378分/89.6小时,全18日,42回'
+                    },
+                    tooltip: {
+                        showContent: true,
+                        confine: true,
+                        formatter: function (params) {
+                            return params.value[2];
+                        },
+                    },
+                    calendar: [{
+                        left: 'center',
+                        top: 'center',
+                        cellSize: [100, 85.7],
+                        yearLabel: { show: false },
+                        orient: 'vertical',
+                        itemStyle: {
+                            color: '#fef8ef',
+                        },
+                        dayLabel: {
+                            firstDay: 1,
+                            nameMap: 'cn'
+                        },
+                        monthLabel: {
+                            show: true
+                        },
+                        range: '2020-03'
+                    }],
+                    series: [
+                        {
+                            type: 'scatter',
+                            coordinateSystem: 'calendar',
+                            symbolSize: 1,
+                            label: {
+                                normal: {
+                                    show: true,
+                                    formatter: function (params) {
+                                        var d = echarts.number.parseDate(params.value[0]);
+                                        return d.getDate() + '\n\n\n\n';
+                                    },
+                                    textStyle: {
+                                        fontSize: 14,
+                                        fontWeight: 700,
+                                        color: '#a00'
+                                    }
+                                }
+                            },
+                            data: DateData2003
+                        },
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '' + (params.value[2] || '');
+                            },
+                            textStyle: {
+                                fontSize: 10,
+                                color: '#000'
+                            }
+                        }
+                    },
+                    data: save.dateList2003
+                },
+               {
+                   type: 'scatter',
+                   coordinateSystem: 'calendar',
+                   symbolSize: 1,
+                   label: {
+                       normal: {
+                           show: true,
+                           formatter: function (params) {
+                               return '\n\n\n\n' + params.value[1] + 'min';
+                           },
+                           textStyle: {
+                               fontSize: 14,
+                               fontWeight: 700,
+                               color: '#000'
+                           }
+                       }
+                   },
+                   data: save.dateList2003
+               },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: save.graphData2003
+                }
+                    ]
+                },
+             //2020.04
+                {
+                    title: {
+                        top: 10,
+                        left: 'center',
+                        text: '4月直播时长'
+                    },
+                    tooltip: {
+                        showContent: true,
+                        confine: true,
+                        formatter: function (params) {
+                            return params.value[2];
+                        },
+                    },
+                    calendar: [{
+                        left: 'center',
+                        top: 'center',
+                        cellSize: [100, 100],
+                        yearLabel: { show: false },
+                        orient: 'vertical',
+                        itemStyle: {
+                            color: '#fef8ef',
+                        },
+                        dayLabel: {
+                            firstDay: 1,
+                            nameMap: 'cn'
+                        },
+                        monthLabel: {
+                            show: true
+                        },
+                        range: '2020-04'
+                    }],
+                    series: [
+                        {
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    var d = echarts.number.parseDate(params.value[0]);
+                                    return d.getDate() + '\n\n\n\n';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#a00'
+                                }
+                            }
+                        },
+                        data: DateData2004
+                    },
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '' + (params.value[2] || '');
+                            },
+                            textStyle: {
+                                color: '#000'
+                            }
+                        }
+                    },
+                    data: save.dateList2004
+                },
+               {
+                   type: 'scatter',
+                   coordinateSystem: 'calendar',
+                   symbolSize: 1,
+                   label: {
+                       normal: {
+                           show: true,
+                           formatter: function (params) {
+                               return '\n\n\n\n' + params.value[1] + 'min';
+                           },
+                           textStyle: {
+                               fontSize: 14,
+                               fontWeight: 700,
+                               color: '#000'
+                           }
+                       }
+                   },
+                   data: save.dateList2004
+               },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: save.graphData2004
                 }
                     ]
                 },
