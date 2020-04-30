@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 <head>
     <meta charset="UTF-8">
     <script src="echarts.min.js"></script>
@@ -28,7 +28,7 @@
                     //     position: 'left'
                     // },
                     symbolSize: 20,
-                    data: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01'],
+                    data: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01', '2020-05-01'],
                     label: {
                         formatter: function (s) {
                             return (new Date(s)).getMonth()+1+'月';
@@ -389,7 +389,7 @@
                 },
                 series: function () {
                     var serie = [];
-                    for (var i = 0; i < 30; i++) {
+                    for (var i = 0; i < 13; i++) {
                         var item = {
                             type: 'bar',
                             stack: '总量',
@@ -406,6 +406,88 @@
                                 }
                             },
                             data: save.Data2004[i],
+                        }
+                        serie.push(item);
+                    };
+                    var item = {//13
+                        type: 'bar',
+                        stack: '总量',
+                        itemStyle: {
+                            barBorderRadius: 5,
+                        },
+                        label: {
+                            formatter: "{c}" + "\n" + save.text2004[13],
+                            show: true,
+                            position: 'top',
+                            textStyle: {
+                                color: "#000",
+                                fontSize: 10,
+                            }
+                        },
+                        data: save.Data2004[13],
+                    }
+                    serie.push(item);
+                    for (var i = 14; i < 30; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text2004[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data2004[i],
+                        }
+                        serie.push(item);
+                    };
+                    return serie;
+                }()
+            },
+            //5月
+            {
+                title: {
+                    top: 10,
+                    left: 'center',
+                    text: '2020.5神楽めあ直播时长/配信時長',
+                    subtext: '单位：分'
+                },
+                color: save.color2005,
+                xAxis: {
+                    type: 'category',
+                    data: save.day2005,
+                    "axisLabel": {
+                        "interval": 0,//解决代码
+                    }
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: function () {
+                    var serie = [];
+                    for (var i = 0; i < 30; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text2005[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data2005[i],
                         }
                         serie.push(item);
                     };
@@ -454,6 +536,13 @@
                 1,
             ]);
         }
+        var DateData2005 = [];
+        for (var i = 0; i < save.dateList2005.length; i++) {
+            DateData2005.push([
+                save.dateList2005[i][0],
+                1,
+            ]);
+        }
         //赋值----------------------------------------------
 
 
@@ -475,7 +564,7 @@
                     //     position: 'left'
                     // },
                     symbolSize: 20,
-                    data: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01'],
+                    data: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01', '2020-05-01'],
                     label: {
                         formatter: function (s) {
                             return (new Date(s)).getMonth()+1+'月';
@@ -556,7 +645,7 @@
                     title: {
                         top: 10,
                         left: 'center',
-                        text: '1月配信时长1877分/31.3時間,全14日,19回'
+                        text: '1月直播时长1877分/31.3小时,有14天开播,共直播19次'
                     },
                     tooltip: {
                         showContent: true,
@@ -652,7 +741,7 @@
                     title: {
                         top: 10,
                         left: 'center',
-                        text: '2月配信时长4349分/72.5小时,全20日,41回'
+                        text: '2月直播时长4349分/72.5小时,开播20天,直播41次'
                     },
                     tooltip: {
                         showContent: true,
@@ -749,7 +838,7 @@
                     title: {
                         top: 10,
                         left: 'center',
-                        text: '3月配信时长5378分/89.6小时,全18日,42回'
+                        text: '3月直播时长5378分/89.6小时,开播18天,直播42次'
                     },
                     tooltip: {
                         showContent: true,
@@ -846,7 +935,7 @@
                     title: {
                         top: 10,
                         left: 'center',
-                        text: '4月直播时长'
+                        text: '4月直播时长5383分/89.7小时,全23天,41回'
                     },
                     tooltip: {
                         showContent: true,
@@ -905,6 +994,7 @@
                                 return '' + (params.value[2] || '');
                             },
                             textStyle: {
+                                fontSize: 10,
                                 color: '#000'
                             }
                         }
@@ -934,6 +1024,103 @@
                     type: 'heatmap',
                     coordinateSystem: 'calendar',
                     data: save.graphData2004
+                }
+                    ]
+                },
+             //2020.05
+                {
+                    title: {
+                        top: 10,
+                        left: 'center',
+                        text: '5月直播'
+                    },
+                    tooltip: {
+                        showContent: true,
+                        confine: true,
+                        formatter: function (params) {
+                            return params.value[2];
+                        },
+                    },
+                    calendar: [{
+                        left: 'center',
+                        top: 'center',
+                        cellSize: [100, 100],
+                        yearLabel: { show: false },
+                        orient: 'vertical',
+                        itemStyle: {
+                            color: '#fef8ef',
+                        },
+                        dayLabel: {
+                            firstDay: 1,
+                            nameMap: 'cn'
+                        },
+                        monthLabel: {
+                            show: true
+                        },
+                        range: '2020-05'
+                    }],
+                    series: [
+                        {
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    var d = echarts.number.parseDate(params.value[0]);
+                                    return d.getDate() + '\n\n\n\n';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#a00'
+                                }
+                            }
+                        },
+                        data: DateData2005
+                    },
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '' + (params.value[2] || '');
+                            },
+                            textStyle: {
+                                fontSize: 10,
+                                color: '#000'
+                            }
+                        }
+                    },
+                    data: save.dateList2005
+                },
+               {
+                   type: 'scatter',
+                   coordinateSystem: 'calendar',
+                   symbolSize: 1,
+                   label: {
+                       normal: {
+                           show: true,
+                           formatter: function (params) {
+                               return '\n\n\n\n' + params.value[1] + 'min';
+                           },
+                           textStyle: {
+                               fontSize: 14,
+                               fontWeight: 700,
+                               color: '#000'
+                           }
+                       }
+                   },
+                   data: save.dateList2005
+               },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: save.graphData2005
                 }
                     ]
                 },
