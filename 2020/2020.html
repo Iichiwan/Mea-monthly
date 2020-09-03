@@ -18,7 +18,7 @@
         timeline: {
         // y: 0,
         axisType: 'category',
-        currentIndex: 7,
+        currentIndex: 9,
         // realtime: false,
         // loop: false,
         autoPlay: false,
@@ -28,7 +28,7 @@
         //     position: 'left'
         // },
         symbolSize: 20,
-                data: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01', '2020-05-01', '2020-06-01', '2020-07-01', '2020-08-01'],
+                data: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01', '2020-05-01', '2020-06-01', '2020-07-01', '2020-08-01', '2020-09-01'],
         label: {
         formatter: function (s) {
         return (new Date(s)).getMonth()+1+'月';
@@ -706,6 +706,51 @@
                 }()
 
             },
+            //9月
+            {
+                title: {
+                    top: 10,
+                    left: 'center',
+                    text: '2020.9神楽めあ直播时长/配信時長',
+                    subtext: '单位：分'
+                },
+                color: save.color2009,
+                xAxis: {
+                    type: 'category',
+                    data: save.day2009,
+                    "axisLabel": {
+                        "interval": 0,//解决代码
+                    }
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: function () {
+                    var serie = [];
+                    for (var i = 0; i < 30; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text2009[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data2009[i],
+                        }
+                        serie.push(item);
+                    };
+                    return serie;
+                }()
+
+            },
         ]
         };
         // 使用刚指定的配置项和数据显示图表。
@@ -775,6 +820,13 @@
                 1,
             ]);
         }
+        var DateData2009 = [];
+        for (var i = 0; i < save.dateList2009.length; i++) {
+            DateData2009.push([
+                save.dateList2009[i][0],
+                1,
+            ]);
+        }
         //赋值----------------------------------------------
 
 
@@ -786,7 +838,7 @@
         },
         // y: 0,
         axisType: 'category',
-        currentIndex: 7,
+        currentIndex: 8,
         // realtime: false,
         // loop: false,
         autoPlay: false,
@@ -796,7 +848,7 @@
         //     position: 'left'
         // },
         symbolSize: 20,
-                data: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01', '2020-05-01', '2020-06-01', '2020-07-01', '2020-08-01'],
+                data: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01', '2020-05-01', '2020-06-01', '2020-07-01', '2020-08-01', '2020-09-01'],
         label: {
         formatter: function (s) {
         return (new Date(s)).getMonth()+1+'月';
@@ -1643,7 +1695,103 @@
         data: save.graphData2008
         }
         ]
-        },
+            },
+            //2020.09
+            {
+                title: {
+                    top: 10,
+                    left: 'center',
+                    text: '9月直播时长'
+                },
+                tooltip: {
+                    showContent: true,
+                    confine: true,
+                    formatter: function (params) {
+                        return params.value[2];
+                    },
+                },
+                calendar: [{
+                    left: 'center',
+                    top: 'center',
+                    cellSize: [100, 100],
+                    yearLabel: { show: false },
+                    orient: 'vertical',
+                    itemStyle: {
+                        color: '#fef8ef',
+                    },
+                    dayLabel: {
+                        firstDay: 1,
+                        nameMap: 'cn'
+                    },
+                    monthLabel: {
+                        show: true
+                    },
+                    range: '2020-09'
+                }],
+                series: [
+                    {
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    var d = echarts.number.parseDate(params.value[0]);
+                                    return d.getDate() + '\n\n\n\n';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#a00'
+                                }
+                            }
+                        },
+                        data: DateData2009
+                    },
+                    {
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    return '' + (params.value[2] || '');
+                                },
+                                textStyle: {
+                                    color: '#000'
+                                }
+                            }
+                        },
+                        data: save.dateList2009
+                    },
+                    {
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        symbolSize: 1,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: function (params) {
+                                    return '\n\n\n\n' + params.value[1] + 'min';
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    color: '#000'
+                                }
+                            }
+                        },
+                        data: save.dateList2009
+                    },
+                    {
+                        type: 'heatmap',
+                        coordinateSystem: 'calendar',
+                        data: save.graphData2009
+                    }
+                ]
+            },
         ]
         };
         // 使用刚指定的配置项和数据显示图表。
