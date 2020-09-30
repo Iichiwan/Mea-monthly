@@ -727,7 +727,26 @@
                 },
                 series: function () {
                     var serie = [];
-                    for (var i = 0; i < 30; i++) {
+                    
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "4\n" + save.text2009[0],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data2009[0],
+                        }
+                        serie.push(item);
+                    for (var i = 1; i < 30; i++) {
                         var item = {
                             type: 'bar',
                             stack: '总量',
@@ -1701,7 +1720,7 @@
                 title: {
                     top: 10,
                     left: 'center',
-                    text: '9月直播时长'
+                    text: '9月直播时长4251分/70.9小时,全20天,31回'
                 },
                 tooltip: {
                     showContent: true,
