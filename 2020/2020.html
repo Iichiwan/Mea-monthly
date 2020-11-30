@@ -836,7 +836,7 @@
                 },
                 series: function () {
                     var serie = [];
-                    for (var i = 0; i < 30; i++) {
+                    for (var i = 0; i < 8; i++) {
                         var item = {
                             type: 'bar',
                             stack: '总量',
@@ -849,7 +849,45 @@
                                 position: 'insideTop',
                                 textStyle: {
                                     color: "#000",
-                                    fontSize: 10,
+                                    fontSize: 11,
+                                }
+                            },
+                            data: save.Data2011[i],
+                        }
+                        serie.push(item);
+                    };
+                    var item = {//8
+                        type: 'bar',
+                        stack: '总量',
+                        itemStyle: {
+                            barBorderRadius: 5,
+                        },
+                        label: {
+                            formatter: "5+70" + "\n" + save.text2011[8],
+                            show: true,
+                            position: 'insideTop',
+                            textStyle: {
+                                color: "#000",
+                                fontSize: 10,
+                            }
+                        },
+                        data: save.Data2011[8],
+                    }
+                    serie.push(item);
+                    for (var i = 9; i < 30; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text2011[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 11,
                                 }
                             },
                             data: save.Data2011[i],
@@ -2016,7 +2054,7 @@
                 title: {
                     top: 10,
                     left: 'center',
-                    text: '11月直播时长'
+                    text: '11月直播时长1985分/33.1小时,全11天,16回'
                 },
                 tooltip: {
                     showContent: true,
