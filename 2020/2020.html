@@ -919,7 +919,7 @@
                 },
                 series: function () {
                     var serie = [];
-                    for (var i = 0; i < 30; i++) {
+                    for (var i = 0; i < 2; i++) {
                         var item = {
                             type: 'bar',
                             stack: '总量',
@@ -938,7 +938,121 @@
                             data: save.Data2012[i],
                         }
                         serie.push(item);
-                    };
+                    }; 
+                    var item = {//2
+                        type: 'bar',
+                        stack: '总量',
+                        itemStyle: {
+                            barBorderRadius: 5,
+                        },
+                        label: {
+                            formatter: "9" + "\n" + save.text2012[2],
+                            show: true,
+                            position: 'insideTop',
+                            textStyle: {
+                                color: "#000",
+                                fontSize: 10,
+                            }
+                        },
+                        data: save.Data2012[2],
+                    }
+                    serie.push(item);
+                    for (var i = 3; i < 5; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text2012[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 10,
+                                }
+                            },
+                            data: save.Data2012[i],
+                        }
+                        serie.push(item);
+                    }; 
+                    var item = {//5
+                        type: 'bar',
+                        stack: '总量',
+                        itemStyle: {
+                            barBorderRadius: 5,
+                        },
+                        label: {
+                            formatter: "1" + "\n" + save.text2012[5],
+                            show: true,
+                            position: 'insideTop',
+                            textStyle: {
+                                color: "#000",
+                                fontSize: 10,
+                            }
+                        },
+                        data: save.Data2012[5],
+                    }
+                    serie.push(item);
+                    for (var i = 6; i < 12; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text2012[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 10,
+                                }
+                            },
+                            data: save.Data2012[i],
+                        }
+                        serie.push(item);
+                    }; 
+                    var item = {//12
+                        type: 'bar',
+                        stack: '总量',
+                        itemStyle: {
+                            barBorderRadius: 5,
+                        },
+                        label: {
+                            formatter: "2" + "\n" + save.text2012[12],
+                            show: true,
+                            position: 'insideTop',
+                            textStyle: {
+                                color: "#000",
+                                fontSize: 10,
+                            }
+                        },
+                        data: save.Data2012[12],
+                    }
+                    serie.push(item);
+                    for (var i = 13; i < 30; i++) {
+                        var item = {
+                            type: 'bar',
+                            stack: '总量',
+                            itemStyle: {
+                                barBorderRadius: 5,
+                            },
+                            label: {
+                                formatter: "{c}" + "\n" + save.text2012[i],
+                                show: true,
+                                position: 'insideTop',
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 10,
+                                }
+                            },
+                            data: save.Data2012[i],
+                        }
+                        serie.push(item);
+                    }; 
                     return serie;
                 }()
 
@@ -2202,7 +2316,7 @@
                 title: {
                     top: 10,
                     left: 'center',
-                    text: '12月直播时长'
+                    text: '12月直播时长3798分/63.3小时,全23天,34回'
                 },
                 tooltip: {
                     showContent: true,
